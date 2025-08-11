@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- https://cocoshop.vn/ -->
+<!-- http://mauweb.monamedia.net/vanihome/ -->
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng</title>
+    <!-- Font roboto -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Icon fontanwesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Reset css & grid sytem -->
+    <link rel="stylesheet" href="./assets/css/library.css">
+    <!-- Owl Slider css -->
+    <link rel="stylesheet" href="assets/owlCarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/owlCarousel/assets/owl.theme.default.min.css">
+    <!-- Layout -->
+    <link rel="stylesheet" href="./assets/css/common.css">
+    <!-- index -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/new.css">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Owl caroucel Js-->
+    <script src="assets/owlCarousel/owl.carousel.min.js"></script>
+</head>
+
+<body>
+    <div class="header scrolling" id="myHeader">
+        <div class="grid wide">
+            <div class="header__top">
+                <div class="navbar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="index.html" class="header__logo">
+                    <img src="./assets/img/s/logo_transparent.png" alt="logo" class="logo">
+                </a>
+                <div class="header__search">
+                    <div class="header__search-wrap">
+                        <input type="text" class="header__search-input" placeholder="Tìm kiếm">
+                        <a class="header__search-icon" href="#">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+                <!--
+                <div class="header__account">
+                    <a href="#my-Login" class="header__account-login">Đăng Nhập</a>
+                    <a href="#my-Register" class="header__account-register">Đăng Kí</a>
+                </div>
+                <!-- Cart -->
+              <div class="header__cart have" href="#">
+              <!--    <i class="fas fa-shopping-basket"></i>-->  
+              <!--     <div class="header__cart-amount">
+                        3
+                    </div>--> 
+                    <div class="header__cart-wrap">
+                        <!-- norcart -->
+                        <!-- <img class="header__cart-img-nocart" src="http://www.giaybinhduong.com/images/empty-cart.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu -->
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item nav__search">
+                    <div class="nav__search-wrap">
+                        <input class="nav__search-input" type="text" name="" id="" placeholder="Tìm sản phẩm...">
+                    </div>
+                    <div class="nav__search-btn">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </li>
+                <li class="header__nav-item">
+                    <a href="index.html" class="header__nav-link">Trang Chủ</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#" class="header__nav-link">Giới Thiệu</a>
+                </li>
+                <!--
+                <li class="header__nav-item">
+                    <a href="#" class="header__nav-link">Sản Phẩm</a>
+                    <div class="sub-nav-wrap ">
+                        <ul class="sub-nav">
+                            <li class="sub-nav__item">
+                                <a href="listProduct.html" class="sub-nav__link">Chăm sóc toàn thân vvv</a>
+                            </li>
+                            <li class="sub-nav__item">
+                                <a href="listProduct.html" class="sub-nav__link">Khuyến mãi</a>
+                            </li>
+                            <li class="sub-nav__item">
+                                <a href="listProduct.html" class="sub-nav__link">Chăm sóc cơ thể</a>
+                            </li>
+                            <li class="sub-nav__item">
+                                <a href="listProduct.html" class="sub-nav__link">Nước hoa</a>
+                            </li>
+                            <li class="sub-nav__item">
+                                <a href="listProduct.html" class="sub-nav__link">Chăm sóc miệng</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>-->
+                <li class="header__nav-item">
+                    <a href="news.html" class="header__nav-link">Tin Tức</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="contact.html" class="header__nav-link">Liên Hệ</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="grid wide">
+            <div class="main__taskbar">
+                <div class="main__breadcrumb">
+                    <div class="breadcrumb__item">
+                        <a href="index.html" class="breadcrumb__link">Trang chủ</a>
+                    </div>
+                    <div class="breadcrumb__item">
+                        <a href="#" class="breadcrumb__link">Danh sách tin tức</a>
+                    </div>
+                </div>
+            </div>
+            <div class="list-new">
+                <div href="#" class="new-item">
+                    <a href="#" class="new-item__img">
+                        <img src="./assets/img/banyen/tinhche1.jpg" alt="">
+                    </a>
+                    <div class="new-item__body">
+                        <a href="#" class="new-item__title">
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                       </a>
+                        <p class="new-item__time"> Ngày đăng: 27/5/2020</p>
+                        <p class="new-item__description">Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra
+                            vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng
+                            vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí
+                            nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ,
+                            chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên,
+                            nàng nào muốn đep chuẩn mực thì mời vào team.Không khác biệt nhiều so với các dòng makeup Hàn Quốc khác</p>
+                        <a href="#" class="btn btn--default">Xem thêm</a>
+                    </div>
+                </div>
+                <div href="#" class="new-item">
+                    <a href="#" class="new-item__img">
+                        <img src="./assets/img/banyen/tinhche2.jpg" alt="">
+                    </a>
+                    <div class="new-item__body">
+                        <a href="#" class="new-item__title">
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                       </a>
+                        <p class="new-item__time"> Ngày đăng: 27/5/2020</p>
+                        <p class="new-item__description">Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra
+                            vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng
+                            vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí
+                            nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ,
+                            chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên,
+                            nàng nào muốn đep chuẩn mực thì mời vào team.Không khác biệt nhiều so với các dòng makeup Hàn Quốc khác</p>
+                        <a href="#" class="btn btn--default">Xem thêm</a>
+                    </div>
+                </div>
+                <div href="#" class="new-item">
+                    <a href="#" class="new-item__img">
+                        <img src="./assets/img/banyen/soiep.jpg" alt="">
+                    </a>
+                    <div class="new-item__body">
+                        <a href="#" class="new-item__title">
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                       </a>
+                        <p class="new-item__time"> Ngày đăng: 27/5/2020</p>
+                        <p class="new-item__description">Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra
+                            vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng
+                            vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí
+                            nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ,
+                            chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên,
+                            nàng nào muốn đep chuẩn mực thì mời vào team.Không khác biệt nhiều so với các dòng makeup Hàn Quốc khác</p>
+                        <a href="#" class="btn btn--default">Xem thêm</a>
+                    </div>
+                </div>
+                <div href="#" class="new-item">
+                    <a href="#" class="new-item__img">
+                        <img src="./assets/img/banyen/rutlonguot.jpg" alt="">
+                    </a>
+                    <div class="new-item__body">
+                        <a href="#" class="new-item__title">
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                       </a>
+                        <p class="new-item__time"> Ngày đăng: 27/5/2020</p>
+                        <p class="new-item__description">Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra
+                            vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng
+                            vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí
+                            nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ,
+                            chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên,
+                            nàng nào muốn đep chuẩn mực thì mời vào team.Không khác biệt nhiều so với các dòng makeup Hàn Quốc khác</p>
+                        <a href="#" class="btn btn--default">Xem thêm</a>
+                    </div>
+                </div>
+                <div href="#" class="new-item">
+                    <a href="#" class="new-item__img">
+                        <img src="./assets/img/banyen/chanyenrutlong.jpg" alt="">
+                    </a>
+                    <div class="new-item__body">
+                        <a href="#" class="new-item__title">
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                            Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa
+                       </a>
+                        <p class="new-item__time"> Ngày đăng: 27/5/2020</p>
+                        <p class="new-item__description">Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra
+                            vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng
+                            vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ, chất miễn đùa Không phải là những item makeup mới. Thậm chí
+                            nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên, nàng nào muốn Những Item makeup nhà Etude House giá hạt dẻ,
+                            chất miễn đùa Không phải là những item makeup mới. Thậm chí nếu không nói là lâu đời. Nhưng ở thời điểm hiện tại, chúng vẫn không lỗi thời. Rất lì lợm. Bao nhiêu dòng makeup mới ra vẫn không làm chúng ngao ngán. Và tất nhiên,
+                            nàng nào muốn đep chuẩn mực thì mời vào team.Không khác biệt nhiều so với các dòng makeup Hàn Quốc khác</p>
+                        <a href="#" class="btn btn--default">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="grid wide">
+                <div class="row">
+                    <div class="col l-3 m-6 s-12">
+                        <h3 class="footer__title">Liên hệ</h3>
+                        <ul class="footer__list">
+                            <li class="footer__item">
+                                <span class="footer__text">
+                                    <i class="fas fa-map-marked-alt"></i> 319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM
+                                </span>
+                            </li>
+                            <li class="footer__item">
+                                <a href="#" class="footer__link">
+                                    <i class="fas fa-phone"></i> 076 922 0162
+                                </a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="#" class="footer__link">
+                                    <i class="fas fa-envelope"></i> phuonggiang150@gmail.com
+                                </a>
+                            </li>
+                            <li class="footer__item">
+                                <div class="social-group">
+                                    <a href="#" class="social-item"><i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-item"><i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-item"><i class="fab fa-pinterest-p"></i>
+                                    </a>
+                                    <a href="#" class="social-item"><i class="fab fa-invision"></i>
+                                    </a>
+                                    <a href="#" class="social-item"><i class="fab fa-youtube"></i>  
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <span class="footer__text"> &copy Bản quyền thuộc về <a class="footer__link" href="#"> Phương Giang</a></span>
+            </div>
+        </div>
+        <!-- Modal Form -->
+        <!-- Sccipt for owl caroucel -->
+
+        <!-- Script common -->
+        <script src="./assets/js/commonscript.js"></script>
+
+
+</body>
+
+</html>

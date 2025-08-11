@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- https://cocoshop.vn/ -->
+<!-- http://mauweb.monamedia.net/vanihome/ -->
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiêt sản phẩm</title>
+    <!-- Font roboto -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Icon fontanwesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Reset css & grid sytem -->
+    <link rel="stylesheet" href="./assets/css/library.css">
+    <!-- Owl Slider css -->
+    <link rel="stylesheet" href="assets/owlCarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/owlCarousel/assets/owl.theme.default.min.css">
+    <!-- Layout -->
+    <link rel="stylesheet" href="./assets/css/common.css">
+    <!-- index -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/product.css">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Owl caroucel Js-->
+    <script src="assets/owlCarousel/owl.carousel.min.js"></script>
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+    <!-- jQuery + Owl Carousel JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+</head>
+
+<body>
+    <div class="header scrolling" id="myHeader">
+        <div class="grid wide">
+            <div class="header__top">
+                <div class="navbar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="index.html" class="header__logo">
+                    <img src="./assets/img/s/logo_transparent.png" alt="">
+                </a>
+                <div class="header__search">
+                    <div class="header__search-wrap">
+                        <input type="text" class="header__search-input" placeholder="Tìm kiếm">
+                        <a class="header__search-icon" href="#">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+                <!--
+                <div class="header__account">
+                    <a href="#my-Login" class="header__account-login">Đăng Nhập</a>
+                    <a href="#my-Register" class="header__account-register">Đăng Kí</a>
+                </div>
+                -->
+                <!-- Cart -->
+                <div class="header__cart have" href="#">
+                    <div class="header__cart-wrap">
+                        <ul class="order__list">
+                            <li class="item-order">
+                                <div class="order-wrap">
+                                    <a href="product.html" class="order-img">
+                                        <img src="./assets/img/product/product1.jpg" alt="">
+                                    </a>
+                                    <div class="order-main">
+                                        <a href="product.html" class="order-main-name">Áo sơ mi  caro kèm belt caro kèm belt Áo sơ mi caro kèm belt</a>
+                                        <div class="order-main-price">2 x 45,000 ₫</div>
+                                    </div>
+                                    <a href="product.html" class="order-close"><i class="far fa-times-circle"></i></a>
+                                </div>
+                            </li>
+                            <li class="item-order">
+                                <div class="order-wrap">
+                                    <a href="product.html" class="order-img">
+                                        <img src="./assets/img/product/product1.jpg" alt="">
+                                    </a>
+                                    <div class="order-main">
+                                        <a href="product.html" class="order-main-name">Áo sơ mi  caro kèm belt caro kèm belt Áo sơ mi caro kèm belt</a>
+                                        <div class="order-main-price">2 x 45,000 ₫</div>
+                                    </div>
+                                    <a href="product.html" class="order-close"><i class="far fa-times-circle"></i></a>
+                                </div>
+                            </li>
+                            <li class="item-order">
+                                <div class="order-wrap">
+                                    <a href="product.html" class="order-img">
+                                        <img src="./assets/img/product/product1.jpg" alt="">
+                                    </a>
+                                    <div class="order-main">
+                                        <a href="product.html" class="order-main-name">Áo sơ mi  caro kèm belt caro kèm belt Áo sơ mi caro kèm belt</a>
+                                        <div class="order-main-price">2 x 45,000 ₫</div>
+                                    </div>
+                                    <a href="product.html" class="order-close"><i class="far fa-times-circle"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="total-money">Tổng cộng: 120.000đ</div>
+                        <a href="cart.html" class="btn btn--default cart-btn">Xem giỏ hàng</a>
+                        <a href="pay.html" class="btn btn--default cart-btn orange">Thanh toán</a>
+                        <!-- norcart -->
+                        <!-- <img class="header__cart-img-nocart" src="http://www.giaybinhduong.com/images/empty-cart.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu -->
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item nav__search">
+                    <div class="nav__search-wrap">
+                        <input class="nav__search-input" type="text" name="" id="" placeholder="Tìm sản phẩm...">
+                    </div>
+                    <div class="nav__search-btn">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </li>
+                 <li class="header__nav-item">
+                    <a href="index.html" class="header__nav-link">Trang Chủ</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#" class="header__nav-link">Giới Thiệu</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="news.html" class="header__nav-link">Tin Tức</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="contact.html" class="header__nav-link">Liên Hệ</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="grid wide">
+            <div class="productInfo">
+                <div class="row">
+                <!--<div class="col l-5 m-12 s-12">
+                        <div class="owl-carousel owl-theme" id="sync1">
+                            <a href="#" class="product">
+                                <div class="product__avt" style="background-image: url(assets/img/banhang/_DSC0765.JPG)">
+                                </div>
+                            </a>
+                        </div>
+                    </div>-->
+                    <!-- Khung hiển thị ảnh chi tiết sản phẩm -->
+
+
+
+                    <div class="col l-7 m-12s s-12 pl">
+                        <div class="main__breadcrumb">
+                            <div class="breadcrumb__item">
+                                <a href="index.html" class="breadcrumb__link">Trang chủ</a>
+                            </div>
+                            <div class="breadcrumb__item">
+                                <a href="#" class="breadcrumb__link">Cửa hàng</a>
+                            </div>
+                            <div class="breadcrumb__item">
+                                <a href="#" class="breadcrumb__link">Yến Sào</a>
+                            </div>
+                        </div>
+                        <h3 class="productInfo__name" id="productName">Yến Sào Cao Cấp</h3>
+                         <div class="product-detail__image">
+                         <img id="product-detail-img" src="" alt="Hình ảnh sản phẩm" style="width: 100%; max-width: 400px;">
+                        </div>
+                        <div class="productInfo__price">   
+                          <span id="productPrice">990.000</span> <span class="priceInfo__unit">đ</span>
+                        </div>
+                        <div class="productInfo__description" id="productDescription">
+    <!-- Mô tả sản phẩm sẽ được thay đổi bằng JS -->
+                        </div>
+
+                        <div class="productInfo__addToCart">
+                            <div class="buttons_added">
+                                <!-- Tên, giá, mô tả sản phẩm -->
+        
+                              <!--  <input class="minus is-form" type="button" value="-" onclick="minusProduct()">
+                                <input aria-label="quantity" class="input-qty" max="10" min="1" name="" type="number" value="1">
+                                <input class="plus is-form" type="button" value="+" onclick="plusProduct()">-->
+                            </div>
+                           <div class="btn btn--default orange" onclick="window.location.href='contact.html'">Liên Hệ</div>
+                        </div>
+                        <div class="productIndfo__policy ">
+                            <div class="policy bg-1 ">
+                                <img src="./assets/img/policy/policy1.png " class="productIndfo__policy-img "></img>
+                                <div class="productIndfo__policy-info ">
+                                    <h3 class="productIndfo__policy-title ">Giao hàng miễn phí</h3>
+                                    <p class="productIndfo__policy-description ">Cho đơn hàng từ 300K</p>
+                                </div>
+                            </div>
+                            <div class="policy bg-2 ">
+                                <img src="./assets/img/policy/policy2.png " class="productIndfo__policy-img "></img>
+                                <div class="productIndfo__policy-info ">
+                                    <h3 class="productIndfo__policy-title ">Giao hàng miễn phí</h3>
+                                    <p class="productIndfo__policy-description ">Cho đơn hàng từ 300K</p>
+                                </div>
+                            </div>
+                            <div class="policy bg-1 ">
+                                <img src="./assets/img/policy/policy3.png " class="productIndfo__policy-img "></img>
+                                <div class="productIndfo__policy-info ">
+                                    <h3 class="productIndfo__policy-title ">Giao hàng miễn phí</h3>
+                                    <p class="productIndfo__policy-description ">Cho đơn hàng từ 300K</p>
+                                </div>
+                            </div>
+                            <div class="policy bg-2 ">
+                                <img src="./assets/img/policy/policy4.png " class="productIndfo__policy-img "></img>
+                                <div class="productIndfo__policy-info ">
+                                    <h3 class="productIndfo__policy-title ">Giao hàng miễn phí</h3>
+                                    <p class="productIndfo__policy-description ">Cho đơn hàng từ 300K</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="productIndfo__category ">
+                            <p class="productIndfo__category-text"> Số lượng đã bán : 846</p>
+                            <p class="productIndfo__category-text"> Số lượng trong kho : 663</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="productDetail ">
+                <div class="main__tabnine ">
+                    <div class="grid wide ">
+                        <!-- Tab items -->
+                        <div class="tabs ">
+                            <div class="tab-item active ">
+                                Mô tả
+                            </div>
+                            <div class="tab-item ">
+                                Đánh giá
+                            </div>
+                            <div class="line "></div>
+                        </div>
+                        <!-- Tab content -->
+                        <div class="tab-content ">
+                            <div class="tab-pane active ">
+                                <div class="productDes ">
+                                    <div class="productDes__title ">Yến Sào Cao Cấp là gì?</div>
+                                    <p class="productDes__text "> <a href="# " class="productDes__link ">Yến Sào Cao Cấp </a> là một loại thực phẩm quý hiếm được chế biến từ tổ của chim yến (thường là yến hàng – Aerodramus fuciphagus). Loại yến này được gọi là cao cấp khi tổ yến có chất lượng cao, tinh khiết, ít lông, ít tạp chất và thường đến từ những vùng khai thác nổi tiếng như Khánh Hòa, Nha Trang, Cần Giờ hoặc khai thác tự nhiên từ hang động.
+
+                                    </p>
+                                    <div class="productDes__title ">Công Dụng</div>
+                                    <p class="productDes__text "> <a href="# " class="productDes__link ">Yến Sào Cao Cấp </a> Bồi bổ sức khỏe toàn diện
+
+                                                Tăng cường sức đề kháng, phục hồi thể lực nhanh.
+
+                                                Giúp người bệnh nhanh hồi phục sau phẫu thuật, điều trị bệnh lâu dài.
+
+                                                Tốt cho hệ hô hấp
+
+                                                Làm dịu các triệu chứng viêm phế quản, hen suyễn.
+
+                                                Giúp cải thiện chức năng phổi, tăng cường hấp thụ oxy.
+
+                                                Tăng cường trí não
+
+                                                Bổ não, tăng cường trí nhớ, giảm stress.
+
+                                                Hỗ trợ tốt cho học sinh, người lao động trí óc.
+
+                                                Làm đẹp da, chống lão hóa
+
+                                                Kích thích sản sinh collagen và elastin.
+
+                                                Da mịn màng, trắng sáng, giảm nếp nhăn.
+
+                                                Tốt cho phụ nữ mang thai và sau sinh
+
+                                                Cung cấp dưỡng chất giúp mẹ khỏe, con phát triển tốt.
+
+                                                Giúp lợi sữa, nhanh hồi phục cơ thể sau sinh.
+
+                                                Hỗ trợ tiêu hóa
+                                                
+                                                Giúp tăng cường chức năng dạ dày, hấp thụ dinh dưỡng tốt hơn.
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tab-pane ">
+                                <div class="productDes__ratting ">
+                                    <div class="productDes__ratting-title ">Đánh giá của bạn</div>
+                                    <div class="productDes__ratting-wrap">
+                                        <div id="rating">
+                                            <input type="radio" id="star5" name="rating" value="5" />
+                                            <label class="full" for="star5" title="Awesome - 5 stars"></label>
+
+                                            <input type="radio" id="star4half" name="rating" value="4 and a half" />
+                                            <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+
+                                            <input type="radio" id="star4" name="rating" value="4" />
+                                            <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+
+                                            <input type="radio" id="star3half" name="rating" value="3 and a half" />
+                                            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+
+                                            <input type="radio" id="star3" name="rating" value="3" />
+                                            <label class="full" for="star3" title="Meh - 3 stars"></label>
+
+                                            <input type="radio" id="star2half" name="rating" value="2 and a half" />
+                                            <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+
+                                            <input type="radio" id="star2" name="rating" value="2" />
+                                            <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+
+                                            <input type="radio" id="star1half" name="rating" value="1 and a half" />
+                                            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+
+                                            <input type="radio" id="star1" name="rating" value="1" />
+                                            <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+
+                                            <input type="radio" id="starhalf" name="rating" value="half" />
+                                            <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                        </div>
+                                        <textarea class="ratecomment" name=" " id=" " cols="30 " rows="1" placeholder="Vui lòng viết đánh giá của bạn "></textarea>
+                                    </div>
+                                    <input type="submit " class="btn btn--default" value="Đánh giá">
+                                </div>
+                                <ul class="rate__list">
+                                    <li class="rate__item">
+                                        <div class="rate__info">
+                                            <img src="https://lh3.googleusercontent.com/ogw/ADGmqu9PFgn_rHIm9i3eIlVr5RwzwY2w8EystHF213wj=s32-c-mo" alt="">
+                                            <h3 class="rate__user">Giang Tuấn Phương</h3>
+                                            <div class="rate__star">
+                                                <div class="group-star">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rate__comment">Sản phẩm chất lượng rất tốt thật tuyệt vời</div>
+                                    </li>
+                                    <li class="rate__item">
+                                        <div class="rate__info">
+                                            <img src="./assets/img/news/news1.jpg" alt="">
+                                            <h3 class="rate__user">Hoàng Kim Sang</h3>
+                                            <div class="rate__star">
+
+                                            </div>
+                                        </div>
+                                        <div class="rate__comment">Sản phẩm chất lượng quá oke</div>
+                                    </li>
+                                    <li class="rate__item">
+                                        <div class="rate__info">
+                                            <img src="./assets/img/s/a.jpg" alt="">
+                                            <h3 class="rate__user">Nguyễn Huy Hùng</h3>
+                                            <div class="rate__star">
+
+                                            </div>
+                                        </div>
+                                        <div class="rate__comment">Sản phẩm chất lượng rất tốt</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main__frame ">
+                <div class="grid wide ">
+                    <h3 class="category__title ">Yến Sào Trung Kiên</h3>
+                    <h3 class="category__heading ">Sản Phẩm Tương tự</h3>
+                    <div class="owl-carousel hight owl-theme ">
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/rutlongkho.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Rút Lông Khô</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">4.500.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">3.900.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/rutlonguot.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Rút Lông Ướt</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">3.500.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">3.100.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/soiep.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Yến Sợi Ép</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">3.800.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">3.300.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/tinhche1.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Tinh Chế Loại 1</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">3.500.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">3.000.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/tinhche2.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Tinh Chế Loại 2</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">3.200.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">2.800.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/tc3.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Tinh Chế Loại 3</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">3.100.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">2.600.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/vúnomuop.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Vụn Sơ Mướp</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">2.700.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">2.300.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/vundapchan.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Vụn Đắp Chân</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">2.500.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">2.200.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/chanyenrutlong.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Chân Yến Rút Lông</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">3.000.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">2.800.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/yentho.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Yến Thô</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">2.600.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">2.399.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                        <a href="# " class="product ">
+                            <div class="product__avt " style="background-image: url(assets/img/banyen/vienbaby.jpg) ">
+                            </div>
+                            <div class="product__info ">
+                                <h3 class="product__name ">Viên Baby</h3>
+                                <div class="product__price ">
+                                    <div class="price__old ">2.400.000 <span class="price__unit ">đ</span></div>
+                                    <div class="price__new ">2.650.000 <span class="price__unit ">đ</span></div>
+                                </div>
+                            </div>
+                            <div class="product__sale ">
+                                <span class="product__sale-percent ">22%</span>
+                                <span class="product__sale-text ">Giảm</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer ">
+        <div class="grid wide ">
+            <div class="row ">
+                <!--
+                <div class="col l-3 m-6 s-12 ">
+                    <h3 class="footer__title ">Menu</h3>
+                    <ul class="footer__list ">
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Trang điểm</a>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Chăm sóc da</a>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Chăm sóc tóc</a>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Nước hoa</a>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Chăm sóc toàn thân </a>
+                        </li>
+                    </ul>
+                </div>-->
+            <!--   <div class="col l-3 m-6 s-12 ">
+                    <h3 class="footer__title ">Hỗ trợ khách hàng</h3>
+                    <ul class="footer__list ">
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Hướng dẫn mua hàng</a>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Giải đáp thắc mắc</a>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Chính sách mua hàng</a>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">Chính sách đổi trả</a>
+                        </li>
+                    </ul>
+                </div>--> 
+                <div class="col l-3 m-6 s-12 ">
+                    <h3 class="footer__title ">Liên hệ</h3>
+                    <ul class="footer__list ">
+                        <li class="footer__item ">
+                            <span class="footer__text ">
+                                    <i class="fas fa-map-marked-alt "></i> 56 Trần Vỹ,Phường Mai Dịch,Hà Nội
+                                </span>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">
+                                <i class="fas fa-phone "></i> 0973995500
+                            </a>
+                        </li>
+                        <li class="footer__item ">
+                            <a href="# " class="footer__link ">
+                                <i class="fas fa-envelope "></i> vuxuanthuy@gmail.com
+                            </a>
+                        </li>
+                        <li class="footer__item ">
+                            <div class="social-group ">
+                                <a href="https://web.facebook.com/yensaotrungkien1509 " class="social-item "><i class="fab fa-facebook-f "></i>
+                                    </a>
+                                <a href="# " class="social-item "><i class="fab fa-twitter "></i>
+                                    </a>
+                                <a href="# " class="social-item "><i class="fab fa-pinterest-p "></i>
+                                    </a>
+                                <a href="# " class="social-item "><i class="fab fa-invision "></i>
+                                    </a>
+                                <a href="# " class="social-item "><i class="fab fa-youtube "></i>  
+                                    </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--
+                <div class="col l-3 m-6 s-12 ">
+                    <h3 class="footer__title ">Đăng kí</h3>
+                    <ul class="footer__list ">
+                        <li class="footer__item ">
+                            <span class="footer__text ">Đăng ký để nhận được được thông tin ưu đãi mới nhất từ chúng tôi.</span>
+                        </li>
+                        <li class="footer__item ">
+                            <div class="send-email ">
+                                <input class="send-email__input " type="email " placeholder="Nhập Email... ">
+                                <a href="# " class="send-email__link ">
+                                    <i class="fas fa-paper-plane "></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright ">
+            <span class="footer__text "> <a class="footer__link " href="# "> Yến Sào Trung Kiên</a></span>
+        </div>
+    </div>
+    <!-- Modal Form 
+    <div class="ModalForm ">
+        <div class="modal " id="my-Register ">
+            <a href="# " class="overlay-close "></a>
+            <div class="authen-modal register ">
+                <h3 class="authen-modal__title ">Đăng Kí</h3>
+                <div class="form-group ">
+                    <label for="account " class="form-label ">Họ Tên</label>
+                    <input id="account " name="account " type="text " class="form-control ">
+                    <span class="form-message ">Không hợp lệ !</span>
+                </div>
+                <div class="form-group ">
+                    <label for="password " class="form-label ">Tài khoản Email *</label>
+                    <input id="password " name="password " type="text " class="form-control ">
+                    <span class="form-message "></span>
+                </div>
+                <div class="form-group ">
+                    <label for="password " class="form-label ">Mật khẩu *</label>
+                    <input id="password " name="password " type="text " class="form-control ">
+                    <span class="form-message "></span>
+                </div>
+                <div class="form-group ">
+                    <label for="password " class="form-label ">Nhập lại mật khẩu *</label>
+                    <input id="password " name="password " type="text " class="form-control ">
+                    <span class="form-message "></span>
+                </div>
+                <div class="authen__btns ">
+                    <div class="btn btn--default ">Đăng Kí</div>
+                </div>
+            </div>
+        </div>
+        <div class=" modal " id="my-Login ">
+            <a href="# " class="overlay-close "></a>
+            <div class="authen-modal login ">
+                <h3 class="authen-modal__title ">Đăng Nhập</h3>
+                <div class="form-group ">
+                    <label for="account " class="form-label ">Địa chỉ email *</label>
+                    <input id="account " name="account " type="text " class="form-control ">
+                    <span class="form-message ">Tài khoản không chính xác !</span>
+                </div>
+                <div class="form-group ">
+                    <label for="password " class="form-label ">Mật khẩu *</label>
+                    <input id="password " name="password " type="text" class="form-control ">
+                    <span class="form-message "></span>
+                </div>
+                <div class="authen__btns ">
+                    <div class="btn btn--default ">Đăng Nhập</div>
+                    <input type="checkbox " class="authen-checkbox ">
+                    <label class="form-label ">Ghi nhớ mật khẩu</label>
+                </div>
+                <a class="authen__link ">Quên mật khẩu ?</a>
+            </div>
+        </div>
+        <div class="up-top " id="upTop " onclick="goToTop() ">
+            <i class="fas fa-chevron-up "></i>
+        </div>
+
+    </div>
+-->
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "105913298384666");
+        chatbox.setAttribute("attribution", "biz_inbox");
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml: true,
+                version: 'v10.0'
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        $(document).ready(function() {
+            var sync1 = $("#sync1 ");
+            var sync2 = $("#sync2 ");
+            var slidesPerPage = 4;
+            var syncedSecondary = true;
+            sync1.owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: true
+            })
+            sync2
+                .on('initialized.owl.carousel', function() {
+                    sync2.find(".owl-item ").eq(0).addClass("current ");
+                })
+                .owlCarousel({
+                    items: 4,
+                    dots: false,
+                    nav: false,
+                    margin: 30,
+                    smartSpeed: 200,
+                    slideSpeed: 500,
+                    slideBy: 4,
+                    responsiveRefreshRate: 100
+                }).on('changed.owl.carousel', syncPosition2);
+
+            function syncPosition(el) {
+                var count = el.item.count - 1;
+                var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+
+                if (current < 0) {
+                    current = count;
+                }
+                if (current > count)  {
+                    current = 0;
+                }
+
+                //end block
+
+                sync2
+                    .find(".owl-item ")
+                    .removeClass("current ")
+                    .eq(current)
+                    .addClass("current ");
+                var onscreen = sync2.find('.owl-item.active').length - 1;
+                var start = sync2.find('.owl-item.active').first().index();
+                var end = sync2.find('.owl-item.active').last().index();
+
+                if (current > end) {
+                    sync2.data('owl.carousel').to(current, 100, true);
+                }
+                if (current < start) {
+                    sync2.data('owl.carousel').to(current - onscreen, 100, true);
+                }
+            }
+
+            function syncPosition2(el) {
+                if (syncedSecondary) {
+                    var number = el.item.index;
+                    sync1.data('owl.carousel').to(number, 100, true);
+                }
+            }
+
+            sync2.on("click ", ".owl-item ", function(e) {
+                e.preventDefault();
+                var number = $(this).index();
+                sync1.data('owl.carousel').to(number, 300, true);
+            });
+        });
+
+        $('.owl-carousel.hight').owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 6
+                }
+            }
+        })
+    </script>
+
+    <!-- Script common -->
+    <script src="./assets/js/commonscript.js ">
+    </script>
+    <script>
+        function calcRate(r) {
+            const f = ~~r, //Tương tự Math.floor(r)
+                id = 'star' + f + (r % f ? 'half' : '')
+            id && (document.getElementById(id).checked = !0)
+        }
+    </script>
+   <script>
+    const products = {
+        "001": {
+            name: "Yến Sào Cao Cấp",
+            image: "assets/img/banhang/_DSC0765.JPG",
+            price: "990.000 đ",
+            description: "Yến Sào Cao Cấp là loại tổ yến được khai thác và chế biến từ nước dãi của chim yến, thường có chất lượng vượt trội hơn."
+        },
+        "002": {
+            name: "Yến Sào Thường",
+            image: "assets/img/banhang/4.jpg",
+            price: "499.000 đ",
+            description: "Yến Sào Thường là loại tổ yến phổ thông với mức giá hợp lý."
+        },
+        "003": {
+            name: "Rút Lông Khô",
+            image: "assets/img/banyen/rutlongkho.jpg",
+            price: "3.900.000 đ",
+            description: "Yến rút lông khô là một trong những loại yến sào đã được làm sạch lông và tạp chất, sau đó sấy khô để bảo quản lâu hơn."
+        },
+         "004": {
+            name: "Rút Lông Ướt",
+            image: "assets/img/banyen/rutlonguot.jpg",
+            price: "3.100.000 đ",
+            description: "Yến rút lông ướt là tổ yến đã được rút sạch lông và tạp chất, chưa qua sấy khô, vẫn giữ được độ ẩm tự nhiên. Đây là dạng tươi nhất của yến sau khi làm sạch, thích hợp để sử dụng ngay hoặc chế biến trong thời gian ngắn."
+        },
+         "005": {
+            name: "Yến Sợi Ép",
+            image: "assets/img/banyen/soiep.jpg",
+            price: "3.100.000 đ",
+            description: "Yến sợi ép là một loại tổ yến đã qua xử lý và tinh chế, được tạo hình lại từ các sợi yến vụn rời rạc (sợi ngắn, nhỏ hoặc vỡ) bằng phương pháp ép khuôn. Đây là một cách tận dụng phần yến không đạt chuẩn tổ nguyên vẹn để tạo ra sản phẩm có hình thức đẹp và dễ bảo quản."
+        },
+         "006": {
+            name: "Yến Tinh Chế Loại 1",
+            image: "assets/img/banyen/tinhche1.jpg",
+            price: "3.000.000 đ",
+            description: "Yến tinh chế loại 1 là dòng sản phẩm cao cấp nhất trong nhóm yến tinh chế – tức là tổ yến đã được làm sạch hoàn toàn, sau đó tạo hình lại bằng khuôn (theo hình tổ yến), rồi sấy khô để bảo quản lâu dài. Loại 1 là loại đạt chuẩn cao nhất về sợi yến, màu sắc, độ sạch, và độ nguyên vẹn."
+        },
+         "007": {
+            name: "Tinh Chế Loại 2",
+            image: "assets/img/banyen/tinhche2.jpg",
+            price: "2.800.000 đ",
+            description: "Yến tinh chế loại 2 là tổ yến đã qua quá trình làm sạch giống như loại 1, nhưng chất lượng sợi, hình dáng và độ sạch kém hơn một chút. Đây là loại yến phổ thông, giá mềm hơn loại 1, thường được lựa chọn cho mục đích sử dụng hàng ngày, không quá quan trọng hình thức."
+        },
+         "008": {
+            name: "Tinh Chế Loại 3",
+            image: "assets/img/banyen/tc3.jpg",
+            price: "2.600.000 đ",
+            description: "Yến Tinh Chế Loại 3: Là yến đã làm sạch, tạo hình lại, sợi nhỏ, hình thức xấu hơn loại cao cấp, giá rẻ, tiện dùng, dưỡng chất vừa phải."
+        },
+         "009": {
+            name: "Yến Vụn Sơ Mướp",
+            image: "assets/img/banyen/vúnomuop.jpg",
+            price: "2.300.000 đ",
+            description: "Vụn Sơ Mướp: Là phần vụn nhỏ còn lẫn lông, cần nhặt lại, giá rẻ nhất, thích hợp nấu cháo hoặc chưng ăn hằng ngày."
+        },
+         "010": {
+            name: "Vụn Đắp Chân",
+            image: "assets/img/banyen/vundapchan.jpg",
+            price: "2.200.000 đ",
+            description: "Vụn Đắp Chân: Vụn dùng để đắp đáy tổ khi tạo hình, dinh dưỡng vẫn tốt, hình thức không đẹp, giá rẻ."
+        },
+         "011": {
+            name: " Chân Yến Rút Lông",
+            image: "assets/img/banyen/chanyenrutlong.jpg",
+            price: "2.800.000 đ",
+            description: "Chân Yến Rút Lông: Phần chân tổ đã làm sạch, sợi ngắn và dai, giá rẻ hơn tổ nguyên, vẫn giữ được giá trị dinh dưỡng."
+        },
+         "012": {
+            name: "Yến Thô",
+            image: "assets/img/banyen/yentho.jpg",
+            price: "2.399.000 đ",
+            description: "Yến Thô: Yến nguyên tổ chưa làm sạch, còn lông và tạp chất, giữ nguyên hương vị và dưỡng chất, cần thời gian sơ chế."
+        },
+    };
+
+    window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        const product = products[id];
+
+        if (product) {
+            document.getElementById("product-detail-img").src = product.image;
+            document.getElementById("productName").innerText = product.name;
+            document.getElementById("productPrice").innerText = product.price;
+            document.getElementById("productDescription").innerText = product.description;
+
+        } else {
+            document.getElementById("productName").innerText = "Không tìm thấy sản phẩm!";
+            document.getElementById("product-detail-img").style.display = "none";
+            document.getElementById("productPrice").innerText = "";
+            document.getElementById("productDescription").innerText = "";
+        }
+    };
+</script>
+</body>
+</html>
