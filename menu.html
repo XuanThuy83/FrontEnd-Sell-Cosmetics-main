@@ -1,0 +1,24 @@
+<!-- menu.html -->
+<div class="circle-menu">
+  <!-- Nút chính -->
+  <div class="cm-btn cm-main" id="menuToggle"></div>
+
+  <!-- Nút con -->
+  <a class="cm-btn cm-call" href="tel:0973995500" aria-label="Gọi"></a>
+  <a class="cm-btn cm-sms"  href="sms:0973995500?body=Tôi muốn tư vấn sản phẩm" aria-label="SMS"></a>
+  <a class="cm-btn cm-chat" href="https://m.me/100091811215604" target="_blank" rel="noopener" aria-label="Messenger"></a>
+  <a class="cm-btn cm-zalo" href="https://zalo.me/0973995500" target="_blank" rel="noopener" aria-label="Zalo"></a>
+</div>
+
+<script>
+  (function(){
+    var menu = document.querySelector('.circle-menu');
+    var toggleBtn = document.getElementById('menuToggle');
+    if(menu && toggleBtn){
+      toggleBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        menu.classList.toggle('active');
+      });
+    }
+  })();
+</script>

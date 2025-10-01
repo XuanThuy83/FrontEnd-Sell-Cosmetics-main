@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tất cả sản phẩm</title>
+
+  <!-- dùng chung style -->
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="./assets/font/fontawesome-free-5.15.1-web/css/all.min.css">
+  <style>
+    /* Lưới xem tất cả */
+    .all-wrap{max-width:1200px;margin:24px auto;padding:0 12px;}
+    .all-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+    .all-title{font-size:22px;font-weight:800}
+    .products-grid{
+      display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    }
+    /* Giữ lại style .bs-card đã có trong common.css */
+    /* Tuỳ chọn: làm toàn bộ card bấm được */
+    .bs-card.linkable{cursor:pointer}
+    /* Mobile: ép 2 cột */
+    @media (max-width: 600px) {
+    .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="all-wrap">
+    <div class="all-head">
+      <h1 class="all-title">Tất cả sản phẩm</h1>
+      <a href="index.html" class="btn-view-all">← Về trang chủ</a>
+    </div>
+
+    <div id="all-grid" class="products-grid"><!-- JS render --></div>
+  </div>
+
+  <script>
+  // ====== Data sản phẩm (thêm/bớt tuỳ ý) ======
+  const PRODUCTS = [
+    {id:'006', name:'Tinh Chế Loại 1', img:'./assets/img/banyen/tinhche1.jpg', price:'3.000.000 – 3.500.000 đ',
+      bullets:['Chi tiết: Yến tinh chế chọn lọc','Hạn sử dụng: 12 tháng','Hướng dẫn sử dụng: Ngâm & chưng cách thủy']},
+    {id:'007', name:'Tinh Chế Loại 2', img:'./assets/img/banyen/tinhche2.jpg', price:'2.800.000 – 3.200.000 đ',
+      bullets:['Chi tiết: Sợi yến loại phổ thông','Hạn sử dụng: 12 tháng','Hướng dẫn sử dụng: Nấu cháo, chưng yến']},
+    {id:'008', name:'Tinh Chế Loại 3', img:'./assets/img/banyen/tc3.jpg', price:'2.600.000 – 3.100.000 đ',
+      bullets:['Chi tiết: Sợi nhỏ, giá hợp lý','Hạn sử dụng: 12 tháng','Hướng dẫn sử dụng: Ăn hằng ngày']},
+    {id:'003', name:'Rút Lông Khô', img:'./assets/img/banyen/rutlongkho.jpg', price:'3.900.000 – 4.500.000 đ',
+      bullets:['Chi tiết: Đã làm sạch, sấy khô','Hạn sử dụng: 12 tháng','Hướng dẫn sử dụng: Ngâm mềm trước khi nấu']},
+    {id:'004', name:'Rút Lông Ướt', img:'./assets/img/banyen/rutlonguot.jpg', price:'3.100.000 – 3.500.000 đ',
+      bullets:['Chi tiết: Nhặt sạch, còn ẩm','Hạn sử dụng: 7 ngày (bảo quản lạnh)','Hướng dẫn sử dụng: Dùng ngay hoặc chưng']},
+    {id:'005', name:'Yến Sợi Ép', img:'./assets/img/banyen/soiep.jpg', price:'3.100.000 – 3.800.000 đ',
+      bullets:['Chi tiết: Ép từ sợi vụn','Hạn sử dụng: 12 tháng','Hướng dẫn sử dụng: Chưng hoặc nấu cháo']},
+    {id:'012', name:'Yến Thô', img:'./assets/img/banyen/yentho.jpg', price:'2.399.000 – 2.600.000 đ',
+      bullets:['Chi tiết: Nguyên tổ, còn lông','Hạn sử dụng: 12 tháng','Hướng dẫn sử dụng: Tự sơ chế trước khi dùng']},
+    {id:'011', name:'Chân Yến Rút Lông', img:'./assets/img/banyen/chanyenrutlong.jpg', price:'2.800.000 – 3.000.000 đ',
+      bullets:['Chi tiết: Phần chân tổ đã làm sạch','Hạn sử dụng: 12 tháng','Hướng dẫn sử dụng: Chưng hoặc nấu súp']}
+  ];
+
+  // ====== Render card dùng lại markup .bs-card ======
+  const grid = document.getElementById('all-grid');
+
+  function bulletHTML(list){
+    return '<ul class="bs-bullets">' + list.map(t=>{
+      const parts = t.split(':');
+      if (parts.length>1){
+        return `<li><span>${parts[0]}:</span> ${parts.slice(1).join(':').trim()}</li>`;
+      }
+      return `<li>${t}</li>`;
+    }).join('') + '</ul>';
+  }
+
+  grid.innerHTML = PRODUCTS.map(p => `
+    <div class="bs-card linkable" data-href="product.html?id=${p.id}">
+      <div class="bs-cover" style="background-image:url('${p.img}')"></div>
+      <div class="bs-body">
+        <a class="bs-title" href="product.html?id=${p.id}">${p.name}</a>
+        <div class="bs-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        ${bulletHTML(p.bullets)}
+        <div class="bs-bottom">
+          <div class="bs-price">${p.price}</div>
+          <a class="bs-btn" href="product.html?id=${p.id}">Chi tiết</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Toàn bộ card click được
+  grid.querySelectorAll('.bs-card.linkable').forEach(card=>{
+    card.addEventListener('click', e=>{
+      // đừng chặn click vào các link con
+      if (e.target.closest('a')) return;
+      location.href = card.dataset.href;
+    });
+  });
+  </script>
+  <div id="menu-placeholder"></div>
+<script>
+  fetch('menu.html')
+    .then(r => r.text())
+    .then(html => {
+      const host = document.getElementById('menu-placeholder');
+      host.innerHTML = html;
+
+      // Khởi tạo sự kiện sau khi HTML đã được chèn
+      const menu   = host.querySelector('.circle-menu');
+      const toggle = host.querySelector('#menuToggle');
+      if (menu && toggle) {
+        toggle.addEventListener('click', function(e){
+          e.stopPropagation();
+          menu.classList.toggle('active');
+        });
+      }
+
+      // Bấm ra ngoài sẽ tự đóng
+      document.addEventListener('click', function(evt){
+        if (!menu.contains(evt.target)) menu.classList.remove('active');
+      });
+    })
+    .catch(console.error);
+</script>
+</body>
+</html>
