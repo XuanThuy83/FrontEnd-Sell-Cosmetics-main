@@ -5,29 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chi tiết sản phẩm | Yến Sào Trung Kiên</title>
 
-  <!-- Font + icon (giống index) -->
+  <!-- Fonts + Icons -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous" />
 
-  <!-- Reset + grid + owl giống index -->
+  <!-- CSS base -->
   <link rel="stylesheet" href="./assets/css/library.css">
   <link rel="stylesheet" href="./assets/owlCarousel/assets/owl.carousel.min.css">
-
-  <!-- Layout chung (header/footer/menu) -->
   <link rel="stylesheet" href="assets/css/common.css">
-  <!-- Style riêng phần PDP -->
   <link rel="stylesheet" href="assets/css/product.css">
+
+  <!-- Mini style để dropdown trống không che click -->
+ <style>
+  /* Không cho khung trống che click */
+  .header__cart-wrap.empty{
+    display:none!important; pointer-events:none; visibility:hidden;
+    padding:0; border:0; box-shadow:none; background:transparent; width:auto;
+  }
+
+  /* Bố cục & thứ tự lớp để icon luôn click được */
+  .header__cart{ position:relative; z-index:10; }
+  .header__cart-btn{ display:inline-flex; align-items:center; gap:8px; position:relative; z-index:11; }
+  .header__cart-wrap{
+    position:absolute; right:0; top:calc(100% + 8px);
+    width:320px; background:#fff; border:1px solid #eee; border-radius:10px;
+    box-shadow:0 10px 24px rgba(0,0,0,.08); display:none; z-index:10; padding:10px;
+  }
+  .header__cart.have:hover .header__cart-wrap:not(.empty){ display:block; }
+
+  /* Mini-cart: KHỐNG CHẾ kích thước ảnh + layout */
+  .mini-cart-item{ display:grid; grid-template-columns:56px 1fr auto; gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid #f3f3f3; }
+  .mini-cart-item:last-child{ border-bottom:none; }
+  .mini-cart-thumb{ width:56px; height:56px; object-fit:cover; border-radius:6px; }
+  .mini-cart-name{ font-weight:600; line-height:1.3; }
+  .mini-cart-sub{ font-size:12px; color:#666; }
+  .mini-cart-price{ white-space:nowrap; }
+  .mini-cart-actions{ display:flex; gap:8px; margin-top:10px; }
+  .mini-btn{ flex:1; padding:10px 12px; text-align:center; border-radius:8px; border:1px solid #d32f2f; text-decoration:none; }
+  .mini-btn--outline{ color:#d32f2f; background:#fff; }
+  .mini-btn--primary{ color:#fff; background:#d32f2f; }
+</style>
+
 </head>
 <body>
 
-  <!-- ============= HEADER (copy từ index) ============= -->
+  <!-- HEADER -->
   <div class="header scrolling" id="myHeader">
     <div class="grid wide">
       <div class="header__top">
-        <div class="navbar-icon">
-          <span></span><span></span><span></span>
-        </div>
+        <div class="navbar-icon"><span></span><span></span><span></span></div>
         <a href="index.html" class="header__logo">
           <img src="./assets/img/s/logo_transparent.png" alt="logo" class="logo">
         </a>
@@ -37,11 +64,18 @@
             <a class="header__search-icon" href="#"><i class="fas fa-search"></i></a>
           </div>
         </div>
+
+        <!-- Cart -->
         <div class="header__cart have">
-          <div class="header__cart-wrap"></div>
+          <a href="cart.html" class="header__cart-btn" title="Xem giỏ hàng">
+            <i class="fas fa-shopping-basket"></i>
+            <span id="cartCount" class="header__cart-amount">0</span>
+          </a>
+          <div class="header__cart-wrap empty"></div>
         </div>
       </div>
     </div>
+
     <!-- Menu -->
     <div class="header__nav">
       <ul class="header__nav-list">
@@ -57,22 +91,21 @@
     </div>
   </div>
 
-  <!-- ============= MAIN – PRODUCT DETAIL (PDP) ============= -->
-  <div class="main"><!-- giữ margin-top theo common.css -->
+  <!-- MAIN -->
+  <div class="main">
     <main>
       <section class="pdp">
         <div class="pdp-grid">
-
-          <!-- Media bên trái -->
+          <!-- Media -->
           <div class="pdp-media">
             <div class="pdp-main">
               <img id="pdpMainImg" src="" alt="Ảnh sản phẩm">
               <button class="pdp-zoom" title="Xem ảnh lớn">🔍</button>
             </div>
-            <div class="pdp-thumbs"><!-- JS render thumbnails --></div>
+            <div class="pdp-thumbs"></div>
           </div>
 
-          <!-- Thông tin bên phải -->
+          <!-- Info -->
           <div class="pdp-info">
             <h1 class="pdp-title"></h1>
             <div class="pdp-sub"></div>
@@ -85,7 +118,7 @@
 
             <div class="pdp-card">
               <div class="pdp-card__title">Thông tin sản phẩm</div>
-              <ul class="pdp-bullets"><!-- JS render bullets --></ul>
+              <ul class="pdp-bullets"></ul>
             </div>
 
             <div class="pdp-opts">
@@ -98,13 +131,15 @@
               <button class="btn btn-primary">MUA NGAY</button>
             </div>
           </div>
-
         </div>
       </section>
     </main>
   </div>
 
-  <!-- ============= FOOTER (copy từ index) ============= -->
+  <!-- FOOTER (giữ nguyên như của bạn) -->
+   # Auto detect text files and perform LF normalization
+* text=auto
+<!-- ============= FOOTER (copy từ index) ============= -->
   <!---->
     <div class="footer">
   <div class="grid wide">
@@ -159,20 +194,45 @@
   </div>
 </div>
 
-    <!---->
 
-  <!-- ============= JS ============= -->
+  <!-- JS vendor -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./assets/owlCarousel/owl.carousel.min.js"></script>
-
-  <!-- Script chung cho header/menu (nếu bạn đang dùng) -->
   <script src="./assets/js/commonscript.js"></script>
 
   <!-- Dữ liệu sản phẩm -->
   <script src="assets/js/product.js"></script>
 
-  <!-- Render PDP -->
+  <!-- Giỏ hàng dùng chung -->
+  <script src="assets/js/cart.js"></script>
+
+  <!-- RENDER PDP + GẮN NÚT GIỎ -->
   <script>
+  // SHIM nếu dự án cũ dùng window.products (object) → chuyển sang window.PRODUCTS (array)
+  (function(){
+    if (!window.PRODUCTS && window.products) {
+      try {
+        var arr = [];
+        for (var id in window.products) {
+          if (!window.products.hasOwnProperty(id)) continue;
+          var p = window.products[id] || {};
+          arr.push({
+            id: id,
+            name: p.name || '',
+            images: Array.isArray(p.images) ? p.images : (p.image ? [p.image] : []),
+            image: p.image || '',
+            priceMin: p.price || '',
+            priceMax: p.price || '',
+            bullets: p.bullets || [],
+            variants: p.variants || [],
+            sold: p.sold || 0
+          });
+        }
+        window.PRODUCTS = arr;
+      } catch(e) { console.error(e); }
+    }
+  })();
+
   (function () {
     const id = new URLSearchParams(location.search).get('id');
     const P = (window.PRODUCTS || []).find(p => p.id === id);
@@ -191,11 +251,17 @@
     document.querySelector('.pdp-price .min').textContent = P.priceMin || '';
     document.querySelector('.pdp-price .max').textContent = P.priceMax || '';
 
-    // Ảnh & thumbnails
-    const main = document.getElementById('pdpMainImg');
+    // Ảnh & thumbs (fallback image → images, sửa path nếu thiếu ./)
+    const main   = document.getElementById('pdpMainImg');
     const thumbs = document.querySelector('.pdp-thumbs');
+    function fixPath(u){ return (typeof u==='string' && /^assets\//.test(u)) ? './'+u : u; }
+    let imgs = Array.isArray(P.images) ? P.images.slice() : [];
+    if ((!imgs || imgs.length === 0) && P.image) imgs = [P.image];
+    imgs = (imgs || []).map(fixPath).filter(Boolean);
+    if (!imgs.length) imgs = ['./assets/img/placeholder.png'];
+
     thumbs.innerHTML = '';
-    (P.images || []).forEach((src, i) => {
+    imgs.forEach((src, i) => {
       const t = document.createElement('img');
       t.src = src;
       if (i === 0) t.classList.add('active');
@@ -206,7 +272,7 @@
       });
       thumbs.appendChild(t);
     });
-    if (P.images && P.images.length) main.src = P.images[0];
+    main.src = imgs[0] || '';
 
     // Bullets
     const ul = document.querySelector('.pdp-bullets');
@@ -220,32 +286,15 @@
     document.querySelector('.pdp-zoom')?.addEventListener('click', () => {
       if (main.src) window.open(main.src, '_blank');
     });
+
+    // GẮN NÚT GIỎ (dùng cart.js chung)
+    const btnAdd = document.querySelector('.pdp-actions .btn.btn-outline');
+    const btnBuy = document.querySelector('.pdp-actions .btn.btn-primary');
+    if (btnAdd && btnBuy && window.__CART__) {
+      btnAdd.addEventListener('click', () => window.__CART__.addToCart(P, 1, false));
+      btnBuy.addEventListener('click', () => window.__CART__.addToCart(P, 1, true));
+    }
   })();
   </script>
-  <div id="menu-placeholder"></div>
-<script>
-  fetch('menu.html')
-    .then(r => r.text())
-    .then(html => {
-      const host = document.getElementById('menu-placeholder');
-      host.innerHTML = html;
-
-      // Khởi tạo sự kiện sau khi HTML đã được chèn
-      const menu   = host.querySelector('.circle-menu');
-      const toggle = host.querySelector('#menuToggle');
-      if (menu && toggle) {
-        toggle.addEventListener('click', function(e){
-          e.stopPropagation();
-          menu.classList.toggle('active');
-        });
-      }
-
-      // Bấm ra ngoài sẽ tự đóng
-      document.addEventListener('click', function(evt){
-        if (!menu.contains(evt.target)) menu.classList.remove('active');
-      });
-    })
-    .catch(console.error);
-</script>
 </body>
 </html>

@@ -2394,3 +2394,19 @@ html {
   /* Nếu muốn tất cả icon chuyển tông nâu thì bật dòng dưới */
   /* filter: sepia(1) saturate(400%) hue-rotate(330deg) brightness(.9); */
 }
+/* Fix giỏ hàng không click được và ô trắng */
+.header__cart-wrap.empty {
+  display: none !important;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.header__cart.have:hover .header__cart-wrap:not(.empty) {
+  display: block;
+  z-index: 99;
+}
+
+.header__cart-btn {
+  position: relative;
+  z-index: 100;
+}

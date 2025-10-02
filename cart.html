@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng | Yến Sào Trung Kiên</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="./assets/css/library.css">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="./assets/css/product.css"> <!-- tái sử dụng style product -->
+  <style>
+    .cart-page { padding: 40px 0; }
+    .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .cart-table th, .cart-table td {
+      border: 1px solid #ddd; padding: 12px; text-align: center;
+    }
+    .cart-table th { background: #f5f5f5; }
+    .cart-img { width: 80px; height: 80px; object-fit: cover; }
+    .qty-btn { padding: 4px 10px; cursor: pointer; }
+    .cart-actions { display: flex; justify-content: space-between; margin-top: 20px; }
+    .btn { padding: 10px 20px; border: none; cursor: pointer; }
+    .btn-primary { background: #d32f2f; color: #fff; border-radius: 4px; }
+    .btn-outline { border: 1px solid #d32f2f; color: #d32f2f; background: #fff; border-radius: 4px; }
+    .total-box { text-align: right; font-size: 18px; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <div class="header scrolling" id="myHeader">
+    <div class="grid wide">
+      <div class="header__top">
+        <a href="index.html" class="header__logo">
+          <img src="./assets/img/s/logo_transparent.png" alt="logo" class="logo">
+        </a>
+        <div class="header__search">
+          <div class="header__search-wrap">
+            <input type="text" class="header__search-input" placeholder="Tìm kiếm">
+            <a class="header__search-icon" href="#"><i class="fas fa-search"></i></a>
+          </div>
+        </div>
+        <div class="header__cart have">
+          <div class="header__cart-wrap"></div>
+        </div>
+      </div>
+    </div>
+    <div class="header__nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item"><a href="index.html" class="header__nav-link">Trang chủ</a></li>
+        <li class="header__nav-item"><a href="gioithieu.html" class="header__nav-link">Giới Thiệu</a></li>
+        <li class="header__nav-item"><a href="news.html" class="header__nav-link">Tin Tức</a></li>
+        <li class="header__nav-item"><a href="contact.html" class="header__nav-link">Liên Hệ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main cart-page">
+    <div class="grid wide">
+      <h1>Giỏ hàng của bạn</h1>
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Hình ảnh</th>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th>Xóa</th>
+          </tr>
+        </thead>
+        <tbody id="cart-body">
+          <!-- JS render -->
+        </tbody>
+      </table>
+      <div class="total-box">Tổng cộng: <span id="cart-total">0</span> đ</div>
+      <div class="cart-actions">
+        <a href="index.html" class="btn btn-outline">← Tiếp tục mua hàng</a>
+        <a href="pay.html" class="btn btn-primary">Thanh toán</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="grid wide">
+      <div class="row">
+        <div class="col l-3 m-6 s-12">
+          <h3 class="footer__title">Liên hệ</h3>
+          <ul class="footer__list">
+            <li class="footer__item"><span class="footer__text"><i class="fas fa-map-marked-alt"></i> 56 Trần Vỹ, Phường Mai Dịch, Hà Nội</span></li>
+            <li class="footer__item"><a href="tel:0973995500" class="footer__link"><i class="fas fa-phone"></i> 0973995500</a></li>
+            <li class="footer__item"><a href="mailto:vuxuanthuy@gmail.com" class="footer__link"><i class="fas fa-envelope"></i> vuxuanthuy@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span class="footer__text">© 2025 <a class="footer__link" href="#"> Yến Sào Trung Kiên</a>. All rights reserved.</span>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function getCart(){ return JSON.parse(localStorage.getItem("cart")||"[]"); }
+    function saveCart(cart){ localStorage.setItem("cart", JSON.stringify(cart)); }
+
+    function renderCart(){
+      let cart = getCart();
+      let body = document.getElementById("cart-body");
+      let total = 0;
+      body.innerHTML = "";
+      if(cart.length===0){
+        body.innerHTML = '<tr><td colspan="6">Giỏ hàng trống</td></tr>';
+      } else {
+        cart.forEach((p,i)=>{
+          let price = parseInt((p.priceMin||p.price||"0").toString().replace(/\D/g,'')) || 0;
+          let sub = price * p.qty;
+          total += sub;
+          body.innerHTML += `
+            <tr>
+              <td><img src="${(p.images?p.images[0]:p.image)||''}" class="cart-img"></td>
+              <td>${p.name}</td>
+              <td>${p.priceMin||p.price}</td>
+              <td>
+                <button class="qty-btn" onclick="changeQty(${i},-1)">-</button>
+                ${p.qty}
+                <button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+              </td>
+              <td>${sub.toLocaleString()} đ</td>
+              <td><button onclick="removeItem(${i})">❌</button></td>
+            </tr>`;
+        });
+      }
+      document.getElementById("cart-total").textContent = total.toLocaleString();
+    }
+
+    function changeQty(index,delta){
+      let cart = getCart();
+      if(!cart[index]) return;
+      cart[index].qty += delta;
+      if(cart[index].qty<=0) cart.splice(index,1);
+      saveCart(cart);
+      renderCart();
+    }
+
+    function removeItem(index){
+      let cart = getCart();
+      cart.splice(index,1);
+      saveCart(cart);
+      renderCart();
+    }
+
+    document.addEventListener("DOMContentLoaded", renderCart);
+  </script>
+</body>
+</html>

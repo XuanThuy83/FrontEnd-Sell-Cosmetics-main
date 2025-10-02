@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý đơn hàng | Yến Sào Trung Kiên</title>
+<link rel="stylesheet" href="./assets/css/library.css">
+<link rel="stylesheet" href="./assets/css/common.css">
+<style>
+  body{background:#f7f7f7;}
+  /* Không còn header__nav, nên margin-top nhỏ hơn */
+  .wrap{max-width:1200px; margin:90px auto 60px; padding:0 12px;}
+  h1{font-size:28px; margin:0 0 12px;}
+  .toolbar{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:10px;}
+  .toolbar input,.toolbar select{border:1px solid #ddd; border-radius:8px; padding:10px 12px; font-size:15px;}
+  .btn{padding:10px 14px; border-radius:8px; border:1px solid #ccc; background:#fff; cursor:pointer; font-size:15px;}
+  .btn.primary{background:#d32f2f; color:#fff; border-color:#d32f2f}
+  .btn.warn{background:#fff3f3; border-color:#ffbdbd; color:#c62828}
+  table{width:100%; border-collapse:collapse; background:#fff; border:1px solid #eee; border-radius:10px; overflow:hidden;}
+  th,td{padding:12px 10px; border-bottom:1px solid #f1f1f1; vertical-align:top; font-size:16px;}
+  th{background:#fafafa; text-align:left;}
+  tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px;}
+  .tag.cod{background:#fff7e6; color:#a15c00}
+  .tag.bank{background:#e6fff2; color:#006d3b}
+  .tag.paid{background:#e8f5e9; color:#2e7d32}
+  .tag.placed{background:#fffbe6; color:#8d6e00}
+  .muted{color:#777; font-size:13px}
+  .actions .btn{padding:6px 10px; font-size:13px;}
+  .empty{margin-top:10px; background:#fff7f7; border:1px dashed #ffd9d9; padding:14px; border-radius:10px;}
+  @media (max-width: 900px){ .col-hide{display:none;} }
+</style>
+</head>
+<body>
+  <!-- Header rút gọn chỉ còn logo, KHÔNG còn thanh nav -->
+  <div class="header scrolling">
+    <div class="grid wide">
+      <div class="header__top" style="padding:8px 0;">
+        <a href="index.html" class="header__logo">
+          <img src="./assets/img/s/logo_transparent.png" alt="logo" class="logo">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <h1>Quản lý đơn hàng (local)</h1>
+    <div class="toolbar">
+      <input id="kw" placeholder="Tìm tên/SĐT/Mã đơn..." />
+      <select id="fMethod">
+        <option value="">Lọc theo phương thức</option>
+        <option value="BANK">BANK (chuyển khoản)</option>
+        <option value="COD">COD (nhận hàng trả tiền)</option>
+      </select>
+      <select id="fStatus">
+        <option value="">Lọc theo trạng thái</option>
+        <option value="paid">paid (đã thanh toán)</option>
+        <option value="placed">placed (đã đặt)</option>
+        <option value="done">done (đã hoàn tất)</option>
+      </select>
+      <button class="btn" id="btnExport">Xuất CSV</button>
+      <button class="btn warn" id="btnClear">Xoá tất cả (cẩn trọng)</button>
+    </div>
+
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>Sản phẩm (SL)</th>
+          <th>Khách / SDT</th>
+          <th class="col-hide">Địa chỉ</th>
+          <th>PTTT</th>
+          <th>Tổng</th>
+          <th>Trạng thái</th>
+          <th class="col-hide">Ngày tạo</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div id="empty" class="empty" style="display:none">Chưa có dữ liệu đơn hàng.</div>
+  </div>
+
+<script>
+  function fmtMoney(strOrNum){
+    const n = typeof strOrNum === 'number' ? strOrNum : parseInt((strOrNum||'0').toString().replace(/\D/g,''))||0;
+    return n.toLocaleString('vi-VN') + ' đ';
+  }
+  function tagMethod(m){ return `<span class="tag ${m==='BANK'?'bank':'cod'}">${m}</span>`; }
+  function tagStatus(s){ return `<span class="tag ${s}">${s}</span>`; }
+
+  function loadOrders(){ return JSON.parse(localStorage.getItem('orders')||'[]'); }
+  function saveOrders(arr){ localStorage.setItem('orders', JSON.stringify(arr)); }
+
+  // Gộp tên sản phẩm và số lượng
+  function summarizeItems(o){
+    if(!o || !Array.isArray(o.items) || !o.items.length) return '';
+    return o.items.map(it => `${(it.name||'Sản phẩm')} x${it.qty||1}`).join('; ');
+  }
+
+  function render(){
+    const kw = document.getElementById('kw').value.trim().toLowerCase();
+    const fM = document.getElementById('fMethod').value;
+    const fS = document.getElementById('fStatus').value;
+    const tbody = document.getElementById('tbody');
+    tbody.innerHTML = '';
+
+    let data = loadOrders();
+
+    if (kw){
+      data = data.filter(o =>
+        (o.orderId||'').toLowerCase().includes(kw) ||
+        (o.name||'').toLowerCase().includes(kw) ||
+        (o.phone||'').toLowerCase().includes(kw) ||
+        summarizeItems(o).toLowerCase().includes(kw)
+      );
+    }
+    if (fM) data = data.filter(o => (o.method===fM));
+    if (fS) data = data.filter(o => (o.status===fS));
+
+    document.getElementById('empty').style.display = data.length ? 'none' : '';
+
+    data.sort((a,b)=> (b.createdAt||'').localeCompare(a.createdAt||''));
+
+    data.forEach((o,idx)=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${summarizeItems(o)}</strong><div class="muted">${o.orderId||''}</div></td>
+        <td>${o.name||''}<div class="muted">${o.phone||''}</div></td>
+        <td class="col-hide">${o.addr||''}</td>
+        <td>${tagMethod(o.method||'-')}</td>
+        <td>${o.total || fmtMoney(o.amount||0)}</td>
+        <td>${tagStatus(o.status||'-')}</td>
+        <td class="col-hide">${o.createdAt ? new Date(o.createdAt).toLocaleString('vi-VN') : ''}</td>
+        <td class="actions">
+          <button class="btn" data-act="done" data-i="${idx}">Hoàn tất</button>
+          <button class="btn" data-act="del" data-i="${idx}">Xoá</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function exportCSV(){
+    const rows = [['products','name','phone','addr','method','status','total','amount','createdAt','orderId','note']];
+    loadOrders().forEach(o=>{
+      rows.push([
+        summarizeItems(o),
+        o.name||'',
+        o.phone||'',
+        (o.addr||'').replaceAll('\n',' '),
+        o.method||'',
+        o.status||'',
+        o.total||'',
+        o.amount||'',
+        o.createdAt||'',
+        o.orderId||'',
+        o.note||''
+      ]);
+    });
+    const csv = rows.map(r=> r.map(v=>{
+      const s = (v??'').toString();
+      return /[",\n]/.test(s) ? `"${s.replaceAll('"','""')}"` : s;
+    }).join(',')).join('\n');
+
+    const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'orders.csv';
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    render();
+
+    // Lọc/tìm
+    ['kw','fMethod','fStatus'].forEach(id=>{
+      document.getElementById(id).addEventListener('input', render);
+      document.getElementById(id).addEventListener('change', render);
+    });
+
+    // Thao tác trong bảng
+    document.getElementById('tbody').addEventListener('click', (e)=>{
+      const btn = e.target.closest('button[data-act]');
+      if(!btn) return;
+      const act = btn.dataset.act;
+      const i = parseInt(btn.dataset.i,10);
+      const arr = loadOrders();
+      const item = arr[i]; if(!item) return;
+
+      if(act==='done'){ item.status='done'; saveOrders(arr); render(); }
+      if(act==='del'){ if(confirm('Xoá đơn này?')){ arr.splice(i,1); saveOrders(arr); render(); } }
+    });
+
+    // Export / Clear
+    document.getElementById('btnExport').addEventListener('click', exportCSV);
+    document.getElementById('btnClear').addEventListener('click', ()=>{
+      if(confirm('Xoá TẤT CẢ đơn hàng đang lưu trên trình duyệt này?')){
+        localStorage.removeItem('orders'); render();
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán | Yến Sào Trung Kiên</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="./assets/css/library.css">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="./assets/css/product.css">
+
+  <style>
+    .checkout { padding: 32px 0 48px; }
+    .checkout h1 { margin-bottom: 16px; }
+    .checkout-wrap { display: grid; grid-template-columns: 1fr 420px; gap: 28px; }
+    @media (max-width: 992px){ .checkout-wrap{ grid-template-columns: 1fr; } }
+    .form-card { background:#fff; border:1px solid #eee; border-radius:10px; padding:20px; }
+    .form-row { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    .form-group { margin-bottom:14px; }
+    .form-label { display:block; font-weight:600; margin-bottom:6px; }
+    .form-control, .form-textarea, .form-select { width:100%; border:1px solid #ddd; border-radius:8px; padding:10px 12px; font-size:15px; }
+    .form-textarea { min-height:100px; resize:vertical; }
+    .error-text { color:#e53935; font-size:13px; margin-top:6px; display:none; }
+    .summary { background:#fff; border:1px solid #eee; border-radius:10px; padding:16px; }
+    .sum-title { font-weight:700; font-size:18px; margin-bottom:10px; }
+    .sum-list { max-height:300px; overflow:auto; border:1px dashed #eee; border-radius:8px; padding:8px; }
+    .sum-item { display:grid; grid-template-columns: 64px 1fr auto; gap:10px; align-items:center; padding:8px; border-bottom:1px solid #f3f3f3; }
+    .sum-item:last-child{ border-bottom:none; }
+    .sum-thumb { width:64px; height:64px; border-radius:8px; object-fit:cover; }
+    .sum-name { font-weight:600; line-height:1.3; }
+    .sum-sub { font-size:13px; color:#666; }
+    .sum-price { white-space:nowrap; }
+    .sum-total { margin-top:12px; border-top:1px solid #eee; padding-top:12px; }
+    .sum-row { display:flex; justify-content:space-between; margin:6px 0; }
+    .sum-row.total { font-weight:800; font-size:18px; }
+    .actions { margin-top:16px; display:flex; gap:10px; }
+    .btn { padding:12px 16px; border-radius:8px; border:1px solid transparent; cursor:pointer; }
+    .btn-primary { background:#d32f2f; color:#fff; }
+    .btn-outline { background:#fff; border-color:#d32f2f; color:#d32f2f; }
+    .notice { font-size:13px; color:#666; margin-top:8px; }
+    .empty { padding:18px; background:#fff7f7; border:1px solid #ffd9d9; border-radius:8px; }
+    .form-control.invalid, .form-textarea.invalid, .form-select.invalid{ border-color:#e53935 !important; box-shadow:0 0 0 3px rgba(229,57,53,.08); }
+    .btn[disabled]{ opacity:.5; cursor:not-allowed; filter:grayscale(30%); }
+  </style>
+</head>
+<body>
+  <div class="header scrolling" id="myHeader">
+    <div class="grid wide">
+      <div class="header__top">
+        <a href="index.html" class="header__logo">
+          <img src="./assets/img/s/logo_transparent.png" alt="logo" class="logo">
+        </a>
+        <div class="header__search">
+          <div class="header__search-wrap">
+            <input type="text" class="header__search-input" placeholder="Tìm kiếm">
+            <a class="header__search-icon" href="#"><i class="fas fa-search"></i></a>
+          </div>
+        </div>
+        <div class="header__cart have"><div class="header__cart-wrap"></div></div>
+      </div>
+    </div>
+    <div class="header__nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item"><a href="index.html" class="header__nav-link">Trang chủ</a></li>
+        <li class="header__nav-item"><a href="gioithieu.html" class="header__nav-link">Giới Thiệu</a></li>
+        <li class="header__nav-item"><a href="news.html" class="header__nav-link">Tin Tức</a></li>
+        <li class="header__nav-item"><a href="contact.html" class="header__nav-link">Liên Hệ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main checkout">
+    <div class="grid wide">
+      <h1>Thanh toán</h1>
+      <div class="checkout-wrap">
+        <div>
+          <div class="form-card">
+            <h3>Thông tin khách hàng</h3>
+            <div class="form-group">
+              <label class="form-label" for="fullname">Họ và tên *</label>
+              <input id="fullname" class="form-control" placeholder="Nguyễn Văn A">
+              <div class="error-text" id="err-name">Vui lòng nhập họ tên (tối thiểu 2 ký tự).</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="phone">Số điện thoại *</label>
+                <input id="phone" class="form-control" placeholder="09xxxxxxxx">
+                <div class="error-text" id="err-phone">Số điện thoại không hợp lệ.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email (không bắt buộc)</label>
+                <input id="email" class="form-control" placeholder="email@domain.com">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="address">Địa chỉ giao hàng *</label>
+              <input id="address" class="form-control" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành">
+              <div class="error-text" id="err-address">Vui lòng nhập địa chỉ giao hàng.</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="payment">Phương thức thanh toán</label>
+                <select id="payment" class="form-select">
+                  <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                  <option value="bank">Chuyển khoản ngân hàng</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="ship">Vận chuyển</label>
+                <select id="ship" class="form-select">
+                  <option value="standard">Tiêu chuẩn (0đ, 2–4 ngày)</option>
+                  <option value="fast">Nhanh (+30.000đ, 1–2 ngày)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="note">Ghi chú</label>
+              <textarea id="note" class="form-textarea" placeholder="Ví dụ: Giao giờ hành chính, gọi trước khi giao..."></textarea>
+            </div>
+
+            <div class="actions">
+              <a href="cart.html" class="btn btn-outline"><i class="far fa-angle-left"></i> Quay lại giỏ hàng</a>
+              <button id="btnPlaceOrder" class="btn btn-primary" disabled>Đặt hàng</button>
+            </div>
+            <div class="notice">Bằng việc nhấn “Đặt hàng”, bạn đồng ý với điều khoản & chính sách của cửa hàng.</div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="summary">
+            <div class="sum-title">Đơn hàng của bạn</div>
+            <div id="emptyBox" class="empty" style="display:none;">Giỏ hàng trống. <a href="index.html">Tiếp tục mua hàng</a>.</div>
+            <div id="sumList" class="sum-list"></div>
+            <div class="sum-total">
+              <div class="sum-row"><span>Tạm tính</span><strong id="subtotal">0 đ</strong></div>
+              <div class="sum-row"><span>Phí vận chuyển</span><strong id="shipFee">0 đ</strong></div>
+              <div class="sum-row total"><span>Tổng cộng</span><span id="grandTotal">0 đ</span></div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="grid wide">
+      <div class="row">
+        <div class="col l-3 m-6 s-12">
+          <h3 class="footer__title">Liên hệ</h3>
+          <ul class="footer__list">
+            <li class="footer__item"><span class="footer__text"><i class="fas fa-map-marked-alt"></i> 56 Trần Vỹ, Phường Mai Dịch, Hà Nội</span></li>
+            <li class="footer__item"><a href="tel:0973995500" class="footer__link"><i class="fas fa-phone"></i> 0973995500</a></li>
+            <li class="footer__item"><a href="mailto:vuxuanthuy@gmail.com" class="footer__link"><i class="fas fa-envelope"></i> vuxuanthuy@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span class="footer__text">© 2025 <a class="footer__link" href="https://web.facebook.com/yensaotrungkien1509"> Yến Sào Trung Kiên</a>. All rights reserved.</span>
+    </div>
+  </div>
+
+  <script>
+    /* ====== Notify webhook (dán URL /exec + ?secret=...) ====== */
+    const NOTIFY_URL = 'https://script.google.com/macros/s/AKfycbyyvlRX8jQ5t3hzXsra02LeT9PulJRU3X-sWfoR3xq1CcxlyPLCebB5VWH1dLEgHKF-cA/exec?secret=CHANGE_ME_32CHARS';
+    function notify(orderObj){
+  try{
+    if(!NOTIFY_URL) return;
+    fetch(NOTIFY_URL, {
+      method: 'POST',
+      // KHÔNG đặt headers để tránh preflight OPTIONS 405
+      body: JSON.stringify(orderObj)
+    })
+    .then(r => r.text())        // không cần đọc JSON, chỉ để kích hoạt request
+    .then(t => console.log('notify sent'))
+    .catch(err => console.error('notify error =>', err));
+  }catch(e){ console.error(e); }
+}
+
+
+    /* ==== Helpers ==== */
+    function getCart(){ return JSON.parse(localStorage.getItem("cart")||"[]"); }
+    function saveCart(c){ localStorage.setItem("cart", JSON.stringify(c)); }
+    function moneyToNumber(str){ return parseInt((str||"0").toString().replace(/\D/g,''))||0; }
+    function numberToMoney(n){ return (n||0).toLocaleString('vi-VN'); }
+    function computeTotals(cart, shipMode){
+      let subtotal = 0;
+      cart.forEach(p=>{
+        const price = moneyToNumber(p.priceMin || p.price || '0');
+        const qty = p.qty || 1;
+        subtotal += price * qty;
+      });
+      const shipFee = shipMode === 'fast' ? 30000 : 0;
+      const grand = subtotal + shipFee;
+      return { subtotal, shipFee, grand };
+    }
+
+    function renderSummary(){
+      const listEl = document.getElementById('sumList');
+      const emptyBox = document.getElementById('emptyBox');
+      const subtotalEl = document.getElementById('subtotal');
+      const shipFeeEl = document.getElementById('shipFee');
+      const grandEl = document.getElementById('grandTotal');
+
+      const cart = getCart();
+      listEl.innerHTML = '';
+      if(!cart.length){
+        emptyBox.style.display = '';
+        subtotalEl.textContent = '0 đ';
+        shipFeeEl.textContent = '0 đ';
+        grandEl.textContent = '0 đ';
+        return;
+      }
+      emptyBox.style.display = 'none';
+
+      cart.forEach(p=>{
+        const img = (p.images&&p.images[0]) || p.image || '';
+        const priceStr = p.priceMin || p.price || '0';
+        const price = moneyToNumber(priceStr);
+        const qty = p.qty || 1;
+        const sub = price * qty;
+
+        const item = document.createElement('div');
+        item.className = 'sum-item';
+        item.innerHTML = `
+          <img class="sum-thumb" src="${img}" alt="">
+          <div>
+            <div class="sum-name">${p.name}</div>
+            <div class="sum-sub">Giá: ${priceStr} | SL: ${qty}</div>
+          </div>
+          <div class="sum-price">${numberToMoney(sub)} đ</div>
+        `;
+        listEl.appendChild(item);
+      });
+
+      const shipMode = document.getElementById('ship')?.value || 'standard';
+      const {subtotal, shipFee, grand} = computeTotals(cart, shipMode);
+
+      subtotalEl.textContent = numberToMoney(subtotal) + ' đ';
+      shipFeeEl.textContent  = numberToMoney(shipFee) + ' đ';
+      grandEl.textContent    = numberToMoney(grand) + ' đ';
+    }
+
+    function setInvalid(el, msgId, on){
+      if(!el) return;
+      if(on){ el.classList.add('invalid'); const m = document.getElementById(msgId); if(m) m.style.display='block'; }
+      else  { el.classList.remove('invalid'); const m = document.getElementById(msgId); if(m) m.style.display='none'; }
+    }
+
+    function validateForm(showErrors=true){
+      const name = document.getElementById('fullname');
+      const phone = document.getElementById('phone');
+      const addr = document.getElementById('address');
+
+      const nameOk  = name.value.trim().length >= 2;
+      const phoneOk = /^(0|\+84)\d{9,10}$/.test(phone.value.trim());
+      const addrOk  = addr.value.trim().length >= 5;
+
+      if(showErrors){
+        setInvalid(name,  'err-name',  !nameOk);
+        setInvalid(phone, 'err-phone', !phoneOk);
+        setInvalid(addr,  'err-address', !addrOk);
+      }else{
+        name.classList.toggle('invalid', !nameOk);
+        phone.classList.toggle('invalid', !phoneOk);
+        addr.classList.toggle('invalid', !addrOk);
+      }
+      return (nameOk && phoneOk && addrOk);
+    }
+
+    function updateSubmitState(){
+      const btn = document.getElementById('btnPlaceOrder');
+      const ok = validateForm(false) && getCart().length > 0;
+      btn.disabled = !ok;
+    }
+
+    function placeOrder(){
+      if(!validateForm(true)){ updateSubmitState(); return; }
+      const cart = getCart();
+      if(!cart.length){ alert('Giỏ hàng trống. Vui lòng thêm sản phẩm.'); updateSubmitState(); return; }
+
+      const orderId = 'YK' + Math.random().toString(36).slice(2, 8).toUpperCase();
+      const name = document.getElementById('fullname').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const addr = document.getElementById('address').value.trim();
+      const pay = document.getElementById('payment').value;
+      const ship = document.getElementById('ship').value;
+      const note = document.getElementById('note').value.trim();
+
+      const totals = computeTotals(cart, ship);
+      const order = {
+        orderId, name, phone, addr, pay, ship, note,
+        total: numberToMoney(totals.grand) + ' đ',
+        amount: totals.grand,
+        items: cart
+      };
+      localStorage.setItem('last_order', JSON.stringify(order));
+
+          if (pay === 'bank'){
+        // GỬI THÔNG BÁO NGAY: trạng thái tạm 'pending'
+        notify({
+          ...order,
+          method: 'BANK',
+          status: 'pending'   // sẽ cập nhật 'paid' ở qrpay.html sau khi KH bấm "Tôi đã chuyển khoản"
+        });
+
+        window.location.href = "qrpay.html";
+      } else {
+        // === COD: LƯU ĐƠN + NOTIFY + XOÁ GIỎ + VỀ TRANG CHỦ ===
+        const orders = JSON.parse(localStorage.getItem('orders')||'[]');
+        orders.push({ ...order, method: 'COD', status: 'placed', createdAt: new Date().toISOString() });
+        localStorage.setItem('orders', JSON.stringify(orders));
+
+        notify({ ...order, method: 'COD', status: 'placed' });
+
+        saveCart([]);
+        alert('Đặt hàng thành công (COD)!\nMã đơn: ' + orderId + '\nTổng tiền: ' + order.total);
+        window.location.href = 'index.html';
+      }
+
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      renderSummary();
+      ['input','change','blur'].forEach(evt=>{
+        document.getElementById('fullname').addEventListener(evt, updateSubmitState);
+        document.getElementById('phone').addEventListener(evt, updateSubmitState);
+        document.getElementById('address').addEventListener(evt, updateSubmitState);
+        document.getElementById('ship').addEventListener(evt, ()=>{ renderSummary(); updateSubmitState(); });
+        document.getElementById('payment').addEventListener(evt, updateSubmitState);
+        document.getElementById('note').addEventListener(evt, updateSubmitState);
+      });
+      updateSubmitState();
+      document.getElementById('btnPlaceOrder').addEventListener('click', placeOrder);
+    });
+  </script>
+</body>
+</html>

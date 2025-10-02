@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thanh toán QR | Yến Sào Trung Kiên</title>
+
+  <link rel="stylesheet" href="./assets/css/library.css">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="./assets/css/product.css">
+
+  <style>
+    body{background:#f9f9f9;}
+    .qrwrap{max-width:980px; margin:120px auto 56px; padding:0 12px;}
+    @media (max-width: 768px){ .qrwrap{ margin-top: 140px; } }
+    .qr-grid{display:grid; grid-template-columns: 1fr 360px; gap:24px;}
+    @media (max-width: 992px){ .qr-grid{grid-template-columns:1fr;} }
+    .card{background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.03)}
+    .card.pad{padding:18px;}
+    .title{font-weight:800; font-size:22px; margin:10px 0 14px;}
+    .subtle{color:#666; font-size:14px}
+    .qr-box{display:flex; flex-direction:column; align-items:center; padding:10px 0 6px}
+    .qr-img{width:280px; height:280px; object-fit:contain; border:1px solid #eee; border-radius:12px; background:#fff; }
+    .bank-info{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:14px; font-size:15px}
+    .bank-info .cell{background:#fafafa; border:1px dashed #e9e9e9; border-radius:10px; padding:10px 12px}
+    .cell .k{color:#666; font-size:13px}
+    .cell .v{font-weight:700; margin-top:4px; word-break:break-word}
+    .order-box .row{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f3f3f3;}
+    .order-box .row:last-child{border-bottom:none}
+    .order-box .row .lb{color:#666}
+    .order-box .row .val{font-weight:700}
+    .order-total{font-size:18px}
+    .actions{margin-top:16px; display:flex; flex-wrap:wrap; gap:10px}
+    .btn{padding:12px 16px; border-radius:8px; border:1px solid transparent; cursor:pointer}
+    .btn-primary{background:#d32f2f; color:#fff}
+    .btn-outline{background:#fff; color:#d32f2f; border-color:#d32f2f}
+    .help{margin-top:10px; font-size:13px; color:#666}
+    .empty{padding:18px; background:#fff7f7; border:1px solid #ffd9d9; border-radius:10px; margin-top:10px}
+  </style>
+</head>
+<body>
+
+  <div class="header scrolling">
+    <div class="grid wide">
+      <div class="header__top">
+        <a href="index.html" class="header__logo">
+          <img src="./assets/img/s/logo_transparent.png" alt="logo" class="logo">
+        </a>
+        <div class="header__search">
+          <div class="header__search-wrap">
+            <input type="text" class="header__search-input" placeholder="Tìm kiếm">
+            <a class="header__search-icon" href="#"><i class="fas fa-search"></i></a>
+          </div>
+        </div>
+        <div class="header__cart have"><div class="header__cart-wrap"></div></div>
+      </div>
+    </div>
+    <div class="header__nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item"><a href="index.html" class="header__nav-link">Trang chủ</a></li>
+        <li class="header__nav-item"><a href="gioithieu.html" class="header__nav-link">Giới Thiệu</a></li>
+        <li class="header__nav-item"><a href="news.html" class="header__nav-link">Tin Tức</a></li>
+        <li class="header__nav-item"><a href="contact.html" class="header__nav-link">Liên Hệ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qrwrap">
+    <div class="title">Thanh toán bằng VietQR</div>
+    <div class="subtle">Vui lòng mở ứng dụng ngân hàng, quét mã và chuyển khoản đúng số tiền/tên tài khoản. Sau khi chuyển, bấm <strong>“Tôi đã chuyển khoản”</strong>.</div>
+
+    <div class="qr-grid">
+      <div class="card pad">
+        <div class="qr-box">
+          <img id="vietqrImg" class="qr-img" alt="VietQR">
+        </div>
+
+        <div class="bank-info">
+          <div class="cell"><div class="k">Ngân hàng</div><div class="v" id="bankNameText">MB Bank</div></div>
+          <div class="cell"><div class="k">Chủ tài khoản</div><div class="v" id="accNameText">VU XUAN THUY</div></div>
+          <div class="cell"><div class="k">Số tài khoản</div><div class="v" id="accNoText">0978677777777</div></div>
+          <div class="cell"><div class="k">Nội dung CK</div><div class="v" id="qrDescText">YK XXXXX XXXXXXXXX</div></div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="btnPaid">Tôi đã chuyển khoản</button>
+          <a class="btn btn-outline" href="pay.html">Hủy / đổi phương thức</a>
+        </div>
+        <div class="help">Cần hỗ trợ? Gọi <a href="tel:0973995500">0973 995 500</a>.</div>
+      </div>
+
+      <aside class="card pad">
+        <div class="title" style="font-size:18px;margin-top:0">Đơn hàng của bạn</div>
+        <div id="emptyBox" class="empty" style="display:none">Không tìm thấy đơn hàng. Vui lòng đặt lại từ <a href="pay.html">trang thanh toán</a>.</div>
+
+        <div class="order-box" id="orderBox" style="display:none">
+          <div class="row"><div class="lb">Mã đơn</div><div class="val" id="ordId"></div></div>
+          <div class="row"><div class="lb">Khách</div><div class="val" id="ordName"></div></div>
+          <div class="row"><div class="lb">SĐT</div><div class="val" id="ordPhone"></div></div>
+          <div class="row"><div class="lb">Địa chỉ</div><div class="val" id="ordAddr"></div></div>
+          <div class="row order-total"><div class="lb">Tổng thanh toán</div><div class="val" id="ordTotal"></div></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="grid wide">
+      <div class="row">
+        <div class="col l-3 m-6 s-12">
+          <h3 class="footer__title">Liên hệ</h3>
+          <ul class="footer__list">
+            <li class="footer__item"><span class="footer__text"><i class="fas fa-map-marked-alt"></i> 56 Trần Vỹ, Phường Mai Dịch, Hà Nội</span></li>
+            <li class="footer__item"><a href="tel:0973995500" class="footer__link"><i class="fas fa-phone"></i> 0973995500</a></li>
+            <li class="footer__item"><a href="mailto:vuxuanthuy@gmail.com" class="footer__link"><i class="fas fa-envelope"></i> vuxuanthuy@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span class="footer__text">© 2025 <a class="footer__link" href="https://web.facebook.com/yensaotrungkien1509"> Yến Sào Trung Kiên</a>. All rights reserved.</span>
+    </div>
+  </div>
+
+  <script>
+    /* ====== Notify webhook (dán URL /exec + ?secret=...) ====== */
+    const NOTIFY_URL = 'https://script.google.com/macros/s/AKfycbyyvlRX8jQ5t3hzXsra02LeT9PulJRU3X-sWfoR3xq1CcxlyPLCebB5VWH1dLEgHKF-cA/exec?secret=CHANGE_ME_32CHARS';
+  function notify(orderObj){
+  try{
+    if(!NOTIFY_URL) return;
+    fetch(NOTIFY_URL, {
+      method: 'POST',
+      // KHÔNG đặt headers để tránh preflight OPTIONS 405
+      body: JSON.stringify(orderObj)
+    })
+    .then(r => r.text())        // không cần đọc JSON, chỉ để kích hoạt request
+    .then(t => console.log('notify sent'))
+    .catch(err => console.error('notify error =>', err));
+  }catch(e){ console.error(e); }
+}
+
+
+    /* ===== Cấu hình VietQR (SỬA THEO THÔNG TIN CỦA BẠN) ===== */
+    const BANK_ID = 'mbbank';
+    const BANK_NAME_UI = 'MB Bank';
+    const ACCOUNT_NO   = '0978677777777';
+    const ACCOUNT_NAME = 'VU XUAN THUY';
+    const QR_TEMPLATE  = 'compact2';
+
+    function buildVietQRUrl(amount, desc){
+      const base = `https://img.vietqr.io/image/${BANK_ID}-${ACCOUNT_NO}-${QR_TEMPLATE}.png`;
+      const qs = new URLSearchParams({ amount, addInfo: desc, accountName: ACCOUNT_NAME }).toString();
+      return `${base}?${qs}`;
+    }
+    function moneyToNumber(str){ return parseInt((str||'0').toString().replace(/\D/g,''))||0; }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const order = JSON.parse(localStorage.getItem('last_order')||'{}');
+      if (!order || !order.orderId || (!order.total && !order.amount)){
+        document.getElementById('emptyBox').style.display = '';
+        return;
+      }
+
+      const amount = order.amount ?? moneyToNumber(order.total);
+      const addInfo = `YK ${order.orderId} ${order.phone||''}`.trim();
+
+      document.getElementById('bankNameText').textContent = BANK_NAME_UI;
+      document.getElementById('accNameText').textContent  = ACCOUNT_NAME;
+      document.getElementById('accNoText').textContent    = ACCOUNT_NO;
+      document.getElementById('qrDescText').textContent   = addInfo;
+      document.getElementById('vietqrImg').src            = buildVietQRUrl(amount, addInfo);
+
+      document.getElementById('orderBox').style.display = '';
+      document.getElementById('ordId').textContent    = order.orderId;
+      document.getElementById('ordName').textContent  = order.name || '';
+      document.getElementById('ordPhone').textContent = order.phone || '';
+      document.getElementById('ordAddr').textContent  = order.addr || '';
+      document.getElementById('ordTotal').textContent = order.total || (amount.toLocaleString('vi-VN') + ' đ');
+
+      document.getElementById('btnPaid').addEventListener('click', ()=>{
+        const orders = JSON.parse(localStorage.getItem('orders')||'[]');
+        const saved = {
+          ...order,
+          method: 'BANK',
+          status: 'paid',
+          createdAt: new Date().toISOString()
+        };
+        orders.push(saved);
+        localStorage.setItem('orders', JSON.stringify(orders));
+
+        notify(saved);
+
+        localStorage.removeItem('cart');
+        localStorage.setItem('last_order_status', 'paid');
+
+        alert(`Cảm ơn bạn đã thanh toán!\nMã đơn: ${order.orderId}\nTổng tiền: ${order.total || (amount.toLocaleString('vi-VN') + ' đ')}\nChúng tôi sẽ sớm xác nhận và giao hàng.`);
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>

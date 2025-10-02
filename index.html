@@ -24,6 +24,42 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Owl caroucel Js-->
     <script src="./assets/owlCarousel/owl.carousel.min.js"></script>
+    <style>
+  /* Bố cục & click */
+  .header__cart { position: relative; z-index: 10; }
+  .header__cart-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    position: relative; z-index: 11; /* đảm bảo nổi trên dropdown */
+  }
+  .header__cart-amount { display:inline-block; min-width:18px; text-align:center; }
+
+  /* Dropdown mini-cart */
+  .header__cart-wrap{
+    position: absolute; right: 0; top: calc(100% + 8px);
+    width: 320px; background: #fff; border: 1px solid #eee;
+    border-radius: 10px; box-shadow: 0 10px 24px rgba(0,0,0,.08);
+    display: none; z-index: 10; padding: 10px;
+  }
+  /* Chỉ hiển thị khi có item và đang hover */
+  .header__cart.have:hover .header__cart-wrap:not(.empty){ display:block; }
+
+  /* Khi trống: đừng chiếm chỗ, đừng chặn click */
+  .header__cart-wrap.empty{
+    display:none !important; pointer-events:none; padding:0; border:0; box-shadow:none; background:transparent; width:auto;
+  }
+
+  /* Mini-cart items */
+  .mini-cart-item { display:grid; grid-template-columns:56px 1fr auto; gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid #f3f3f3; }
+  .mini-cart-item:last-child{ border-bottom:none; }
+  .mini-cart-thumb{ width:56px; height:56px; object-fit:cover; border-radius:6px; }
+  .mini-cart-name{ font-weight:600; line-height:1.3; }
+  .mini-cart-sub{ font-size:12px; color:#666; }
+  .mini-cart-price{ white-space:nowrap; }
+  .mini-cart-actions{ display:flex; gap:8px; margin-top:10px; }
+  .mini-btn{ flex:1; padding:10px 12px; text-align:center; border-radius:8px; border:1px solid #d32f2f; text-decoration:none; }
+  .mini-btn--outline{ color:#d32f2f; background:#fff; }
+  .mini-btn--primary{ color:#fff; background:#d32f2f; }
+</style>
 
 </head>
 
@@ -47,22 +83,16 @@
                         </a>
                     </div>
                 </div>
-                <!--
-                <div class="header__account">
-                    <a href="#my-Login" class="header__account-login">Đăng Nhập</a>
-                    <a href="#my-Register" class="header__account-register">Đăng Kí</a>
-                </div>
                 <!-- Cart -->
-              <div class="header__cart have" href="#">
-              <!--    <i class="fas fa-shopping-basket"></i>-->  
-              <!--     <div class="header__cart-amount">
-                        3
-                    </div>--> 
-                    <div class="header__cart-wrap">
-                        <!-- norcart -->
-                        <!-- <img class="header__cart-img-nocart" src="http://www.giaybinhduong.com/images/empty-cart.png" alt=""> -->
-                    </div>
-                </div>
+                <div class="header__cart have">
+                    <a href="cart.html" class="header__cart-btn" aria-label="Giỏ hàng">
+                        <i class="fas fa-shopping-basket"></i>
+                         <span id="cartCount" class="header__cart-amount">0</span>
+                    </a>
+                 <div class="header__cart-wrap empty"></div>
+                </div>  
+
+
             </div>
         </div>
         <!-- Menu -->
@@ -76,47 +106,12 @@
                         <i class="fas fa-search"></i>
                     </div>
                 </li>
-                <!--
-                <li class="header__nav-item authen-form">
-                    <a href="#" class="header__nav-link">Tài Khoản</a>
-                    <ul class="sub-nav">
-                        <li class="sub-nav__item">
-                            <a href="#my-Login" class="sub-nav__link">Đăng Nhập</a>
-                        </li>
-                        <li class="sub-nav__item">
-                            <a href="#my-Register" class="sub-nav__link">Đăng Kí</a>
-                        </li>
-                    </ul>
-                </li> -->
                 <li class="header__nav-item index">
                     <a href="index.html" class="header__nav-link">Trang chủ</a>
                 </li>
                 <li class="header__nav-item">
                     <a href="gioithieu.html" class="header__nav-link">Giới Thiệu</a>
                 </li>
-                <!--
-                <li class="header__nav-item">
-                    <a href="#" class="header__nav-link">Sản Phẩm</a>
-                    <div class="sub-nav-wrap ">
-                        <ul class="sub-nav">
-                            <li class="sub-nav__item">
-                                <a href="listProduct.html" class="sub-nav__link">Chăm sóc toàn thân vvv</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="listProduct.html" class="sub-nav__link">Khuyến mãi</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="listProduct.html" class="sub-nav__link">Chăm sóc cơ thể</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="listProduct.html" class="sub-nav__link">Nước hoa</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="listProduct.html" class="sub-nav__link">Chăm sóc miệng</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>-->
                 <li class="header__nav-item">
                     <a href="news.html" class="header__nav-link">Tin Tức</a>
                 </li>
@@ -1470,6 +1465,7 @@ document.addEventListener('DOMContentLoaded', function(){
     })
     .catch(console.error);
 </script>
+<script src="assets/js/cart.js"></script>
 </body>
 
 </html>
