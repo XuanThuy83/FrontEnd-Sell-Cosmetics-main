@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài cẩm nang | Yến Sào Trung Kiên</title>
+  <link rel="stylesheet" href="./assets/css/library.css">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="./assets/css/new.css">
+  <style>
+    .article{max-width:900px;margin:24px auto;padding:0 16px}
+    .article h1{font-size:2.6rem;line-height:1.25;margin:8px 0 6px}
+    .article .meta{color:#888;font-size:1.3rem;margin-bottom:14px}
+    .article .cover{width:100%;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.08);margin:8px 0 16px}
+    .article p{font-size:1.6rem;line-height:1.8;text-align:justify;margin:10px 0}
+    .back{display:inline-block;margin-top:16px}
+  </style>
+</head>
+<body>
+  <!-- Header gọn -->
+  <div class="header scrolling" id="myHeader">
+    <div class="grid wide">
+      <div class="header__top">
+        <a href="index.html" class="header__logo"><img src="./assets/img/s/logo_transparent.png" class="logo" alt="logo"></a>
+        <div class="header__search"><div class="header__search-wrap">
+          <input class="header__search-input" placeholder="Tìm kiếm">
+          <a class="header__search-icon" href="#"><i class="fas fa-search"></i></a>
+        </div></div>
+      </div>
+    </div>
+       <div class="header__nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item"><a href="index.html" class="header__nav-link">Trang Chủ</a></li>
+        <li class="header__nav-item"><a href="gioithieu.html" class="header__nav-link">Giới Thiệu</a></li>
+        <li class="header__nav-item"><a href="news.html" class="header__nav-link">Tin Tức</a></li>
+        <li class="header__nav-item"><a href="camnang.html" class="header__nav-link">Cẩm Nang Hướng Dẫn Sử Dụng</a></li>
+        <li class="header__nav-item"><a href="contact.html" class="header__nav-link">Liên Hệ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="article">
+      <img id="cover" class="cover" alt="">
+      <h1 id="title"></h1>
+      <div class="meta" id="date"></div>
+      <div id="content"></div>
+      <a href="camnang.html" class="btn btn--default back">← Quay lại cẩm nang</a>
+    </div>
+  </div>
+
+     <!---->
+    <div class="footer">
+  <div class="grid wide">
+    <div class="row">
+      <div class="col l-3 m-6 s-12">
+        <h3 class="footer__title">Liên hệ</h3>
+        <ul class="footer__list">
+          <li class="footer__item"><span class="footer__text">
+            <i class="fas fa-map-marked-alt"></i> 56 Trần Vỹ, Phường Mai Dịch, Hà Nội
+          </span></li>
+          <li class="footer__item"><a href="tel:0973995500" class="footer__link"><i class="fas fa-phone"></i> 0973995500</a></li>
+          <li class="footer__item"><a href="mailto:vuxuanthuy@gmail.com" class="footer__link"><i class="fas fa-envelope"></i> vuxuanthuy@gmail.com</a></li>
+        </ul>
+      </div>
+      <div class="col l-3 m-6 s-6 footer-support">
+        <h3 class="footer__title">Chính Sách</h3>
+        <ul class="footer__list">
+          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Quy Định Chung</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Bảo Mật</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Bảo Hành</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Đổi Trả Hàng</a></li>
+        </ul>
+      </div>
+     <div class="col l-3 m-6 s-6 footer-policy">
+        <h3 class="footer__title">Hỗ trợ khách hàng</h3>
+        <ul class="footer__list">
+          <li class="footer__item"><a href="#" class="footer__link">Chính sách đặt hàng-thanh toán</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Chính sách vận chuyển-kiểm hàng</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+      <div class="col l-3 m-6 s-12">
+        <h3 class="footer__title">Đăng ký nhận tin</h3>
+        <div class="send-email">
+          <input class="send-email__input" type="email" placeholder="Nhập Email...">
+          <a href="#" class="send-email__link"><i class="fas fa-paper-plane"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <span class="footer__text">© 2025 <a class="footer__link" href="https://web.facebook.com/yensaotrungkien1509"> Yến Sào Trung Kiên</a>. All rights reserved.</span>
+  </div>
+</div>
+  
+  <script src="assets/js/guides.js"></script>
+  <script>
+    function q(k){return new URL(location.href).searchParams.get(k)}
+    const id = q('id');
+    const post = (window.GUIDES_API && GUIDES_API.get(id)) || null;
+
+    if(!post){
+      document.getElementById('title').textContent = 'Không tìm thấy bài viết';
+      document.getElementById('cover').style.display = 'none';
+      document.getElementById('content').innerHTML = '';
+    } else {
+      document.title = post.title + ' | Cẩm nang';
+      document.getElementById('title').textContent = post.title;
+      document.getElementById('date').textContent = (post.date||'').replace(/-/g,'/');
+      document.getElementById('cover').src = post.image; document.getElementById('cover').alt = post.title;
+      document.getElementById('content').innerHTML = post.content || '';
+    }
+  </script>
+
+  <div id="menu-placeholder"></div>
+<script>
+  fetch('menu.html')
+    .then(r => r.text())
+    .then(html => {
+      const host = document.getElementById('menu-placeholder');
+      host.innerHTML = html;
+
+      // Khởi tạo sự kiện sau khi HTML đã được chèn
+      const menu   = host.querySelector('.circle-menu');
+      const toggle = host.querySelector('#menuToggle');
+      if (menu && toggle) {
+        toggle.addEventListener('click', function(e){
+          e.stopPropagation();
+          menu.classList.toggle('active');
+        });
+      }
+
+      // Bấm ra ngoài sẽ tự đóng
+      document.addEventListener('click', function(evt){
+        if (!menu.contains(evt.target)) menu.classList.remove('active');
+      });
+    })
+    .catch(console.error);
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cẩm nang hướng dẫn sử dụng</title>
+  <link rel="stylesheet" href="./assets/css/library.css">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <style>
+    .wrap{max-width:1200px;margin:24px auto;padding:0 12px}
+    .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:24px 0}
+    @media(max-width:1024px){.guide-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:739px){.guide-grid{grid-template-columns:1fr}}
+    .guide-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+    .guide-thumb{width:100%;aspect-ratio:16/9;object-fit:cover}
+    .guide-body{padding:16px}
+    .guide-title{font-size:1.8rem;font-weight:700;color:#333;display:block;margin-bottom:8px}
+    .guide-desc{color:#555;line-height:1.6}
+    .guide-meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+    .empty{padding:24px;background:#fff;border-radius:12px;text-align:center}
+    .btn--default{background:#9c27b0;color:#fff;padding:6px 12px;border-radius:6px;text-decoration:none;}
+    .btn--default:hover{background:#7b1fa2}
+  </style>
+</head>
+<body>
+<!-- Menu -->
+<div class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item nav__search">
+                    <div class="nav__search-wrap">
+                        <input class="nav__search-input" type="text" name="" id="" placeholder="Tìm sản phẩm...">
+                    </div>
+                    <div class="nav__search-btn">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </li>
+                <li class="header__nav-item index">
+                    <a href="index.html" class="header__nav-link">Trang chủ</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="gioithieu.html" class="header__nav-link">Giới Thiệu</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="news.html" class="header__nav-link">Tin Tức</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="news.html" class="header__nav-link">Cẩm Nang Hướng Dẫn Sử Dụng</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="contact.html" class="header__nav-link">Liên Hệ</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+
+  <div class="wrap">
+    <div id="guideGrid" class="guide-grid"></div>
+    <div id="empty" class="empty" style="display:none">Chưa có bài nào. Vui lòng tạo tại <a href="admin-camnang.html">trang quản lý</a>.</div>
+  </div>
+
+  <script src="assets/js/guides.js"></script>
+  <script>
+    const grid=document.getElementById('guideGrid');
+    const empty=document.getElementById('empty');
+    const items=GUIDES_API.list();
+    if(!items.length){ empty.style.display='block'; }
+    grid.innerHTML=items.map(p=>`
+      <article class="guide-card">
+        <img class="guide-thumb" src="${p.image}" alt="${p.title}">
+        <div class="guide-body">
+          <a class="guide-title" href="guide.html?id=${encodeURIComponent(p.id)}">${p.title}</a>
+          <p class="guide-desc">${p.excerpt||''}</p>
+          <div class="guide-meta">
+            <span>${(p.date||'').replace(/-/g,'/')}</span>
+            <a class="btn--default readmore"
+               data-id="${p.id}"
+               href="guide.html?id=${encodeURIComponent(p.id)}">Đọc thêm</a>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    // click handler ensures reliable navigation
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('.readmore');
+      if(!btn) return;
+      e.preventDefault();
+      const id = btn.dataset.id;
+      if(id) window.location.href = `guide.html?id=${encodeURIComponent(id)}`;
+    });
+  </script>
+<div class="footer">
+  <div class="grid wide">
+    <div class="row">
+      <div class="col l-3 m-6 s-12">
+        <h3 class="footer__title">Liên hệ</h3>
+        <ul class="footer__list">
+          <li class="footer__item"><span class="footer__text">
+            <i class="fas fa-map-marked-alt"></i> 56 Trần Vỹ, Phường Mai Dịch, Hà Nội
+          </span></li>
+          <li class="footer__item"><a href="tel:0973995500" class="footer__link"><i class="fas fa-phone"></i> 0973995500</a></li>
+          <li class="footer__item"><a href="mailto:vuxuanthuy@gmail.com" class="footer__link"><i class="fas fa-envelope"></i> vuxuanthuy@gmail.com</a></li>
+        </ul>
+      </div>
+      <div class="col l-3 m-6 s-6 footer-support">
+        <h3 class="footer__title">Chính Sách</h3>
+        <ul class="footer__list">
+          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Quy Định Chung</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Bảo Mật</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Bảo Hành</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Đổi Trả Hàng</a></li>
+        </ul>
+      </div>
+     <div class="col l-3 m-6 s-6 footer-policy">
+        <h3 class="footer__title">Hỗ trợ khách hàng</h3>
+        <ul class="footer__list">
+          <li class="footer__item"><a href="#" class="footer__link">Chính sách đặt hàng-thanh toán</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Chính sách vận chuyển-kiểm hàng</a></li>
+          <li class="footer__item"><a href="#" class="footer__link">Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+      <div class="col l-3 m-6 s-12">
+        <h3 class="footer__title">Đăng ký nhận tin</h3>
+        <div class="send-email">
+          <input class="send-email__input" type="email" placeholder="Nhập Email...">
+          <a href="#" class="send-email__link"><i class="fas fa-paper-plane"></i></a>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

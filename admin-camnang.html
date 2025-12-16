@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Quản lý Cẩm nang</title>
+<link rel="stylesheet" href="./assets/css/library.css">
+<link rel="stylesheet" href="./assets/css/common.css">
+<style>
+  body{background:#f7f7f7}
+  .wrap{max-width:1080px;margin:24px auto;padding:0 12px}
+  .card{background:#fff;border:1px solid #eee;border-radius:12px;padding:16px;margin-bottom:16px}
+  h1{margin:6px 0 12px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form label{display:block;font-weight:700;margin:8px 0 6px}
+  .form input,.form textarea{width:100%;border:1px solid #ddd;border-radius:8px;padding:10px 12px;font-size:15px}
+  .form textarea{min-height:180px}
+  .btn{padding:10px 14px;border-radius:8px;border:1px solid transparent;cursor:pointer}
+  .btn-primary{background:#7b3f00;color:#fff}
+  .btn-danger{background:#fff;border-color:#e53935;color:#e53935}
+  .list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .item{background:#fff;border:1px solid #eee;border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+  .item img{width:100%;aspect-ratio:16/9;object-fit:cover}
+  .item .b{padding:10px;flex:1}
+  .meta{font-size:12px;color:#888;margin-top:4px}
+  .help{font-size:13px;color:#666}
+  @media(max-width:1024px){.list{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:739px){.grid2{grid-template-columns:1fr}.list{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Quản lý Cẩm nang</h1>
+    <div class="card form">
+      <div class="grid2">
+        <div>
+          <label>Ảnh bìa (URL, chọn file hoặc dán ảnh)</label>
+          <input id="fImage" placeholder="assets/img/camnang/ten-anh.jpg" type="text">
+          <input id="fUpload" type="file" accept="image/*" style="margin-top:6px">
+          <div id="imgPreview" style="margin-top:10px"></div>
+          <div class="help">Mẹo: có thể Ctrl+V để dán ảnh từ clipboard.</div>
+
+          <label style="margin-top:12px">Tiêu đề bài viết</label>
+          <input id="fTitle" placeholder="Nhập tiêu đề bài viết">
+        </div>
+        <div>
+          <label>Nội dung bài viết (HTML hoặc đoạn văn)</label>
+          <textarea id="fContent" placeholder="<p>Đoạn nội dung...</p>"></textarea>
+        </div>
+      </div>
+      <div style="margin-top:10px; display:flex; gap:8px">
+        <button class="btn btn-primary" id="btnAdd">Thêm bài</button>
+        <a class="btn" href="camnang.html" target="_blank">Mở trang Cẩm nang</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Danh sách bài hiện có</h3>
+      <div id="postList" class="list"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/guides.js"></script>
+  <script>
+    const $=s=>document.querySelector(s);
+    const upload=$('#fUpload'), imgInput=$('#fImage'), preview=$('#imgPreview'), postList=$('#postList');
+
+    // chọn file từ máy
+    upload.addEventListener('change',e=>{
+      const f=e.target.files[0]; if(!f) return;
+      const reader=new FileReader();
+      reader.onload=ev=>{
+        imgInput.value=ev.target.result;
+        preview.innerHTML=`<img src="${ev.target.result}" style="max-width:220px;border-radius:8px;box-shadow:0 0 6px rgba(0,0,0,.2)">`;
+      };
+      reader.readAsDataURL(f);
+    });
+
+    // dán ảnh trực tiếp
+    window.addEventListener('paste',e=>{
+      const item=[...e.clipboardData.items].find(i=>i.type.startsWith('image/'));
+      if(!item) return;
+      const file=item.getAsFile();
+      const reader=new FileReader();
+      reader.onload=ev=>{
+        imgInput.value=ev.target.result;
+        preview.innerHTML=`<img src="${ev.target.result}" style="max-width:220px;border-radius:8px;box-shadow:0 0 6px rgba(0,0,0,.2)">`;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function renderList(){
+      const data=GUIDES_API.list();
+      postList.innerHTML=data.map(x=>`
+        <div class="item">
+          <img src="${x.image}" alt="${x.title}">
+          <div class="b">
+            <div style="font-weight:800">${x.title}</div>
+            <div class="meta">${(x.date||'').replace(/-/g,'/')}</div>
+          </div>
+          <div style="display:flex;gap:8px;padding:10px">
+            <a class="btn" href="guide.html?id=${x.id}" target="_blank">Xem chi tiết</a>
+            <button class="btn btn-danger" data-del="${x.id}">Xoá</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    $('#btnAdd').onclick=()=>{
+      const title=$('#fTitle').value.trim();
+      const image=$('#fImage').value.trim();
+      const content=$('#fContent').value.trim();
+      if(!title||!image||!content){ alert('Vui lòng nhập đủ: Ảnh bìa, Tiêu đề, Nội dung.'); return; }
+      const it=GUIDES_API.create({title,image,content});
+      // reset form
+      $('#fTitle').value=$('#fImage').value=$('#fContent').value=''; preview.innerHTML='';
+      renderList();
+      // đúng FLOW bạn yêu cầu: mở danh sách ngoài và trang chi tiết ngay lập tức
+      window.open('camnang.html','_self');              // chuyển sang trang danh sách
+      window.open('guide.html?id='+it.id,'_blank');     // đồng thời mở chi tiết (tab mới)
+    };
+
+    postList.addEventListener('click',e=>{
+      const id=e.target?.dataset?.del;
+      if(!id) return;
+      if(confirm('Xoá bài này?')){ GUIDES_API.remove(id); renderList(); }
+    });
+
+    renderList();
+  </script>
+</body>
+</html>

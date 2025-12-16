@@ -59,6 +59,14 @@
   .mini-btn{ flex:1; padding:10px 12px; text-align:center; border-radius:8px; border:1px solid #d32f2f; text-decoration:none; }
   .mini-btn--outline{ color:#d32f2f; background:#fff; }
   .mini-btn--primary{ color:#fff; background:#d32f2f; }
+
+/* ==== Sub menu under product section (hover/click SẢN PHẨM) ==== */
+.sub-product-menu{display:none;justify-content:center;gap:40px;margin:12px auto 0;background:#ffe6f2;padding:12px 16px;border-radius:10px;max-width:1200px}
+.sub-product-menu a{font-weight:700;text-decoration:none;color:#d63384}
+.sub-product-menu a:hover{color:#a61d69}
+@media (max-width: 768px){
+  .sub-product-menu{gap:24px;padding:10px 12px}
+}
 </style>
 
 </head>
@@ -116,8 +124,25 @@
                     <a href="news.html" class="header__nav-link">Tin Tức</a>
                 </li>
                 <li class="header__nav-item">
+                    <a href="camnang.html" class="header__nav-link">Hướng Dẫn Sử Dụng</a>
+                </li>
+                <li class="header__nav-item has-dropdown">
+                    <a href="index.html#noi-bat" class="header__nav-link" id="sp-toggle">
+                        SẢN PHẨM
+                        <span class="caret">▾</span>
+                    </a>
+
+                    <!-- Dropdown -->
+                    <div class="sp-dropdown" role="menu" aria-labelledby="sp-toggle">
+                        <a class="sp-item" href="index.html#noi-bat">Sản phẩm nổi bật</a>
+                        <span class="sp-sep"></span>
+                        <a class="sp-item" href="tat-ca-san-pham.html">Tất cả sản phẩm</a>
+                    </div>
+                </li>
+                 <li class="header__nav-item">
                     <a href="contact.html" class="header__nav-link">Liên Hệ</a>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -175,7 +200,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active">
 <!-- BÁN CHẠY -->
-<div class="owl-carousel best owl-theme">
+<div  class="owl-carousel best owl-theme">
 
   <!-- ITEM 1 -->
   <div class="bs-card">
@@ -336,6 +361,69 @@
     <div class="bs-cover" style="background-image:url(./assets/img/banyen/chanyenrutlong.jpg)"></div>
     <div class="bs-body">
       <h3 class="bs-title">Chân Yến Rút Lông</h3>
+      <div class="bs-stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <ul class="bs-bullets">
+        <li><span>Chi tiết:</span> Phần chân tổ đã làm sạch</li>
+        <li><span>Hạn sử dụng:</span> 12 tháng</li>
+        <li><span>Hướng dẫn sử dụng:</span> Chưng hoặc nấu súp</li>
+      </ul>
+      <div class="bs-bottom">
+        <div class="bs-price">2.800.000 – 3.000.000 đ</div>
+        <a class="bs-btn" href="product.html?id=011">Chi tiết</a>
+      </div>
+    </div>
+  </div>
+   <!-- ITEM 9 -->
+  <div class="bs-card">
+    <div class="bs-cover" style="background-image:url(./assets/img/banyen/soiep.jpg)"></div>
+    <div class="bs-body">
+      <h3 class="bs-title">Yến Sào Thường</h3>
+      <div class="bs-stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <ul class="bs-bullets">
+        <li><span>Chi tiết:</span> Phần chân tổ đã làm sạch</li>
+        <li><span>Hạn sử dụng:</span> 12 tháng</li>
+        <li><span>Hướng dẫn sử dụng:</span> Chưng hoặc nấu súp</li>
+      </ul>
+      <div class="bs-bottom">
+        <div class="bs-price">2.800.000 – 3.000.000 đ</div>
+        <a class="bs-btn" href="product.html?id=002">Chi tiết</a>
+      </div>
+    </div>
+  </div>
+   <!-- ITEM 10 -->
+  <div class="bs-card">
+    <div class="bs-cover" style="background-image:url(./assets/img/banyen/vundapchan.jpg)"></div>
+    <div class="bs-body">
+      <h3 class="bs-title">Vụn Sơ Mướp</h3>
+      <div class="bs-stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <ul class="bs-bullets">
+        <li><span>Chi tiết:</span> Phần chân tổ đã làm sạch</li>
+        <li><span>Hạn sử dụng:</span> 12 tháng</li>
+        <li><span>Hướng dẫn sử dụng:</span> Chưng hoặc nấu súp</li>
+      </ul>
+      <div class="bs-bottom">
+        <div class="bs-price">2.800.000 – 3.000.000 đ</div>
+        <a class="bs-btn" href="product.html?id=009">Chi tiết</a>
+      </div>
+    </div>
+  </div>
+   <!-- ITEM 11 -->
+  <div class="bs-card">
+    <div class="bs-cover" style="background-image:url(./assets/img/banyen/vúnomuop.jpg)"></div>
+    <div class="bs-body">
+      <h3 class="bs-title">Vụn Đắp Chân</h3>
       <div class="bs-stars">
         <i class="fas fa-star"></i><i class="fas fa-star"></i>
         <i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -879,7 +967,7 @@
             </div>
         </div>
         <!-- HightLight  -->
-        <div class="main__frame">
+        <div id="noi-bat" class="main__frame">
             <div class="grid wide">
                 <h3 class="category__title">Yến Sào Trung Kiên</h3>
                 <h3 class="category__heading">SẢN PHẨM NỔI BẬT</h3>
@@ -1175,18 +1263,18 @@ Theo y học cổ truyền, yến sào có tác dụng bổ phế, dưỡng nhan
       <div class="col l-3 m-6 s-6 footer-support">
         <h3 class="footer__title">Chính Sách</h3>
         <ul class="footer__list">
-          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Quy Định Chung</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Bảo Mật</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Bảo Hành</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Đổi Trả Hàng</a></li>
+          <li class="footer__item"><a href="cs-quy-dinh.html" class="footer__link">Chính Sách Quy Định Chung</a></li>
+          <li class="footer__item"><a href="cs-bao-mat.html" class="footer__link">Chính Sách Bảo Mật</a></li>
+          <li class="footer__item"><a href="cs-bao-hanh.html" class="footer__link">Chính Sách Bảo Hành</a></li>
+          <li class="footer__item"><a href="cs-doi-tra.html" class="footer__link">Chính Sách Đổi Trả Hàng</a></li>
         </ul>
       </div>
      <div class="col l-3 m-6 s-6 footer-policy">
         <h3 class="footer__title">Hỗ trợ khách hàng</h3>
         <ul class="footer__list">
-          <li class="footer__item"><a href="#" class="footer__link">Chính sách đặt hàng-thanh toán</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Chính sách vận chuyển-kiểm hàng</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Câu hỏi thường gặp</a></li>
+          <li class="footer__item"><a href="ht-dat-hang-thanh-toan.html" class="footer__link">Chính sách đặt hàng-thanh toán</a></li>
+          <li class="footer__item"><a href="ht-van-chuyen-kiem-hang.html" class="footer__link">Chính sách vận chuyển-kiểm hàng</a></li>
+          <li class="footer__item"><a href="faq.html" class="footer__link">Câu hỏi thường gặp</a></li>
         </ul>
       </div>
       <div class="col l-3 m-6 s-12">
@@ -1466,6 +1554,79 @@ document.addEventListener('DOMContentLoaded', function(){
     .catch(console.error);
 </script>
 <script src="assets/js/cart.js"></script>
+
+<script>
+(function(){
+  const li = document.querySelector('.header__nav-item.has-dropdown');
+  const toggle = document.getElementById('sp-toggle');
+  const dd = document.querySelector('.sp-dropdown');
+
+  if(!li || !toggle || !dd) return;
+
+  // Toggle by click (hữu ích trên mobile)
+  toggle.addEventListener('click', function(e){
+    // Nếu đang ở index thì cho scroll mượt tới #noi-bat như ý bạn
+    if (location.pathname.endsWith('index.html')) e.preventDefault();
+    const open = dd.style.visibility === 'visible';
+    if(open){
+      dd.style.opacity = 0; dd.style.visibility = 'hidden'; dd.style.transform = 'translateY(8px)';
+    }else{
+      dd.style.opacity = 1; dd.style.visibility = 'visible'; dd.style.transform = 'translateY(0)';
+    }
+  });
+
+  // Click ngoài thì đóng
+  document.addEventListener('click', function(ev){
+    if(!li.contains(ev.target)){
+      dd.style.opacity = 0; dd.style.visibility = 'hidden'; dd.style.transform = 'translateY(8px)';
+    }
+  });
+})();
+</script>
+
+<script>
+// ==== Dropdown sản phẩm: hoạt động cả hover & click ====
+document.addEventListener('DOMContentLoaded', function(){
+  const toggle = document.getElementById('sp-toggle');
+  const dd = document.querySelector('.sp-dropdown');
+  const product = document.getElementById('noi-bat');
+
+  function toggleDropdown(e){
+    if(!toggle || !dd) return;
+    // luôn xử lý click, tránh jump link
+    e.preventDefault();
+    dd.classList.toggle('open');
+    // Chỉ scroll xuống #noi-bat nếu desktop (để tránh giật menu mobile)
+    if(window.innerWidth > 991 && product){
+      product.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+
+  if(toggle){
+    toggle.addEventListener('click', toggleDropdown);
+  }
+
+  // Click ra ngoài thì đóng lại
+  document.addEventListener('click', function(ev){
+    if(!dd) return;
+    if(toggle && (ev.target === toggle || toggle.contains(ev.target))) return;
+    if(!dd.contains(ev.target)) dd.classList.remove('open');
+  });
+
+  // Fix lỗi onscroll khi classList undefined
+  const prevOnScroll = window.onscroll;
+  window.onscroll = function(){
+    try{
+      const nav = document.querySelector('.header__nav');
+      if(nav){ /* safe */ }
+    }catch(err){ /* ignore */ }
+    if(typeof prevOnScroll === 'function'){
+      try{ prevOnScroll(); }catch(e){}
+    }
+  }
+});
+</script>
+
 </body>
 
 </html>

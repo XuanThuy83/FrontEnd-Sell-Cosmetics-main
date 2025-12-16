@@ -163,21 +163,21 @@
           </li>
         </ul>
       </div>
-      <div class="col l-3 m-6 s-6 footer-support">
+       <div class="col l-3 m-6 s-6 footer-support">
         <h3 class="footer__title">Chính Sách</h3>
         <ul class="footer__list">
-          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Quy Định Chung</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Bảo Mật</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Bảo Hành</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Chính Sách Đổi Trả Hàng</a></li>
+          <li class="footer__item"><a href="cs-quy-dinh.html" class="footer__link">Chính Sách Quy Định Chung</a></li>
+          <li class="footer__item"><a href="cs-bao-mat.html" class="footer__link">Chính Sách Bảo Mật</a></li>
+          <li class="footer__item"><a href="cs-bao-hanh.html" class="footer__link">Chính Sách Bảo Hành</a></li>
+          <li class="footer__item"><a href="cs-doi-tra.html" class="footer__link">Chính Sách Đổi Trả Hàng</a></li>
         </ul>
       </div>
      <div class="col l-3 m-6 s-6 footer-policy">
         <h3 class="footer__title">Hỗ trợ khách hàng</h3>
         <ul class="footer__list">
-          <li class="footer__item"><a href="#" class="footer__link">Chính sách đặt hàng-thanh toán</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Chính sách vận chuyển-kiểm hàng</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Câu hỏi thường gặp</a></li>
+          <li class="footer__item"><a href="ht-dat-hang-thanh-toan.html" class="footer__link">Chính sách đặt hàng-thanh toán</a></li>
+          <li class="footer__item"><a href="ht-van-chuyen-kiem-hang.html" class="footer__link">Chính sách vận chuyển-kiểm hàng</a></li>
+          <li class="footer__item"><a href="faq.html" class="footer__link">Câu hỏi thường gặp</a></li>
         </ul>
       </div>
       <div class="col l-3 m-6 s-12">
@@ -282,18 +282,59 @@
     const sel = document.getElementById('pdpSelect');
     sel.innerHTML = (P.variants || ['Chọn một tuỳ chọn']).map(v => `<option>${v}</option>`).join('');
 
-    // Zoom
+    
+    // ✅ Giá theo biến thể (50gr = priceMin, 100gr = priceMax)
+    const priceMinEl = document.querySelector('.pdp-price .min');
+    const priceMaxEl = document.querySelector('.pdp-price .max');
+    const priceSepEl = document.querySelector('.pdp-price .sep');
+
+    function pickPriceByVariant(variantText){
+      if (/100/.test(variantText)) return P.priceMax;
+      if (/50/.test(variantText))  return P.priceMin;
+      return ''; // fallback
+    }
+
+    function renderPriceByVariant(){
+      const vText = sel?.value || '';
+      const chosen = pickPriceByVariant(vText);
+      if (chosen) {
+        priceMinEl.textContent = chosen;
+        priceMaxEl.textContent = '';
+        if (priceSepEl) priceSepEl.style.display = 'none';
+      } else {
+        priceMinEl.textContent = P.priceMin || '';
+        priceMaxEl.textContent = P.priceMax || '';
+        if (priceSepEl) priceSepEl.style.display = '';
+      }
+    }
+
+    sel.addEventListener('change', renderPriceByVariant);
+    // Render ngay theo lựa chọn hiện tại (nếu có)
+    renderPriceByVariant();
+// Zoom
     document.querySelector('.pdp-zoom')?.addEventListener('click', () => {
       if (main.src) window.open(main.src, '_blank');
     });
 
     // GẮN NÚT GIỎ (dùng cart.js chung)
+    
     const btnAdd = document.querySelector('.pdp-actions .btn.btn-outline');
     const btnBuy = document.querySelector('.pdp-actions .btn.btn-primary');
     if (btnAdd && btnBuy && window.__CART__) {
-      btnAdd.addEventListener('click', () => window.__CART__.addToCart(P, 1, false));
-      btnBuy.addEventListener('click', () => window.__CART__.addToCart(P, 1, true));
+      const buildCartItem = () => {
+        const vText = sel?.value || '';
+        const chosenPrice = pickPriceByVariant(vText) || (P.priceMin || P.price || '');
+        return {
+          ...P,
+          price: chosenPrice,           // dự phòng nơi khác dùng price
+          priceMin: chosenPrice,        // cart đọc từ priceMin để hiển thị/tính
+          selectedVariant: vText        // hiển thị 50gr/100gr trong giỏ
+        };
+      };
+      btnAdd.addEventListener('click', () => window.__CART__.addToCart(buildCartItem(), 1, false));
+      btnBuy.addEventListener('click', () => window.__CART__.addToCart(buildCartItem(), 1, true));
     }
+    
   })();
   </script>
 </body>

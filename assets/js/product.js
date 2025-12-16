@@ -2,7 +2,7 @@ window.PRODUCTS = [
   {
     id: "006",
     name: "Tinh Chế Loại 1",
-    priceMin: "1.900.000 đ",
+    priceMin: "5.000 đ",
     priceMax: "4.500.000 đ",
     sold: 390,
     bullets: [
@@ -11,10 +11,30 @@ window.PRODUCTS = [
       { k: "Hướng dẫn sử dụng", v: "Bật nắp sử dụng ngay. Mỗi ngày 1 hũ. Ngon hơn khi uống lạnh." },
       { k: "Hướng dẫn bảo quản", v: "Nơi khô thoáng, tránh nắng trực tiếp hoặc ngăn mát tủ lạnh." }
     ],
-    variants: ["Chọn một tuỳ chọn", "Set cơ bản", "Set cao cấp", "Set quà tặng"],
+    variants: ["Hộp 50gr","Hộp 100gr"],
     images: [
-      "./assets/img/banyen/tinhche1.jpg",
+      "./assets/img/banyen/chanyenrutlong.jpg",
       "./assets/img/banyen/tinhche2.jpg",
+      "./assets/img/banyen/tc3.jpg",
+      "./assets/img/banyen/rutlongkho.jpg"
+    ]
+  },
+  {
+    id: "007",
+    name: "Tinh Chế Loại 2",
+    priceMin: "2.000.000 đ",
+    priceMax: "4.500.000 đ",
+    sold: 390,
+    bullets: [
+      { k: "Chi tiết", v: "Set quà có nhiều sự lựa chọn" },
+      { k: "Hạn sử dụng", v: "12 tháng" },
+      { k: "Hướng dẫn sử dụng", v: "Bật nắp sử dụng ngay. Mỗi ngày 1 hũ. Ngon hơn khi uống lạnh." },
+      { k: "Hướng dẫn bảo quản", v: "Nơi khô thoáng, tránh nắng trực tiếp hoặc ngăn mát tủ lạnh." }
+    ],
+    variants: ["Hộp 50gr","Hộp 100gr"],
+    images: [
+      "./assets/img/banyen/tinhche2.jpg",
+      "./assets/img/banyen/tinhche1.jpg",
       "./assets/img/banyen/tc3.jpg",
       "./assets/img/banyen/rutlongkho.jpg"
     ]
@@ -30,7 +50,7 @@ window.PRODUCTS = [
       { k: "Hạn sử dụng", v: "12 tháng" },
       { k: "Hướng dẫn sử dụng", v: "Ngâm mềm trước khi nấu" }
     ],
-    variants: ["Chọn một tuỳ chọn", "Hộp 50gr", "Hộp 100gr"],
+    variants: ["Hộp 50gr","Hộp 100gr"],
     images: [
       "./assets/img/banyen/rutlongkho.jpg",
       "./assets/img/banyen/rutlonguot.jpg"
@@ -47,7 +67,7 @@ window.PRODUCTS = [
       { k: "Hạn sử dụng", v: "7 ngày (bảo quản lạnh)" },
       { k: "Hướng dẫn sử dụng", v: "Dùng ngay hoặc chưng" }
     ],
-    variants: ["Chọn một tuỳ chọn", "Hũ 50ml x 6", "Hũ 70ml x 6"],
+    variants: ["Hộp 50gr","Hộp 100gr"],
     images: [
       "./assets/img/banyen/rutlonguot.jpg",
       "./assets/img/banyen/soiep.jpg"
@@ -64,7 +84,7 @@ window.PRODUCTS = [
       { k: "Hạn sử dụng", v: "12 tháng" },
       { k: "Hướng dẫn sử dụng", v: "Tự sơ chế trước khi dùng" }
     ],
-    variants: ["Chọn một tuỳ chọn", "50gr", "100gr"],
+    variants: ["Hộp 50gr","Hộp 100gr"],
     images: [
       "./assets/img/banyen/yentho.jpg"
     ]
@@ -80,8 +100,25 @@ window.PRODUCTS = [
       { k: "Hạn sử dụng", v: "12 tháng" },
       { k: "Hướng dẫn sử dụng", v: "Chưng hoặc nấu súp" }
     ],
-    variants: ["Chọn một tuỳ chọn", "50gr", "100gr"],
+    variants: ["Hộp 50gr","Hộp 100gr"],
     images: [
+      "./assets/img/banyen/chanyenrutlong.jpg"
+    ]
+  },
+   {
+    id: "013",
+    name: "Sang",
+    priceMin: "2.800.000 đ",
+    priceMax: "3.000.000 đ",
+    sold: 55,
+    bullets: [
+      { k: "Chi tiết", v: "Phần chân tổ đã làm sạch" },
+      { k: "Hạn sử dụng", v: "12 tháng" },
+      { k: "Hướng dẫn sử dụng", v: "Chưng hoặc nấu súp" }
+    ],
+    variants: ["Hộp 50gr","Hộp 100gr"],
+    images: [
+      "./assets/img/banyen/chanyenrutlong.jpg",
       "./assets/img/banyen/chanyenrutlong.jpg"
     ]
   }
