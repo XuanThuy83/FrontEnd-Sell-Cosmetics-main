@@ -2,8 +2,8 @@ window.PRODUCTS = [
   {
     id: "006",
     name: "Tinh Chế Loại 1",
-    priceMin: "5.000 đ",
-    priceMax: "4.500.000 đ",
+    priceMin: "1.800.000 đ",
+    priceMax: "3.600.000 đ",
     sold: 390,
     bullets: [
       { k: "Chi tiết", v: "Set quà có nhiều sự lựa chọn" },
@@ -22,8 +22,8 @@ window.PRODUCTS = [
   {
     id: "007",
     name: "Tinh Chế Loại 2",
-    priceMin: "2.000.000 đ",
-    priceMax: "4.500.000 đ",
+    priceMin: "1.600.000 đ",
+    priceMax: "3.000.000 đ",
     sold: 390,
     bullets: [
       { k: "Chi tiết", v: "Set quà có nhiều sự lựa chọn" },
@@ -42,8 +42,8 @@ window.PRODUCTS = [
   {
     id: "003",
     name: "Rút Lông Khô",
-    priceMin: "3.900.000 đ",
-    priceMax: "4.500.000 đ",
+    priceMin: "2.200.000 đ",
+    priceMax: "4.100.000 đ",
     sold: 215,
     bullets: [
       { k: "Chi tiết", v: "Đã làm sạch, sấy khô" },
@@ -59,8 +59,8 @@ window.PRODUCTS = [
   {
     id: "004",
     name: "Rút Lông Ướt",
-    priceMin: "3.100.000 đ",
-    priceMax: "3.500.000 đ",
+    priceMin: "1.800.000 đ",
+    priceMax: "3.400.000 đ",
     sold: 128,
     bullets: [
       { k: "Chi tiết", v: "Nhặt sạch, còn ẩm" },
@@ -76,7 +76,7 @@ window.PRODUCTS = [
   {
     id: "012",
     name: "Yến Thô",
-    priceMin: "2.399.000 đ",
+    priceMin: "1.400.000 đ",
     priceMax: "2.600.000 đ",
     sold: 90,
     bullets: [
@@ -104,11 +104,10 @@ window.PRODUCTS = [
     images: [
       "./assets/img/banyen/chanyenrutlong.jpg"
     ]
-  },
-   {
-    id: "013",
-    name: "Sang",
-    priceMin: "2.800.000 đ",
+  }, {
+    id: "005",
+    name: "Yến Sợi Ép",
+    priceMin: "1.600.000 đ",
     priceMax: "3.000.000 đ",
     sold: 55,
     bullets: [
@@ -118,8 +117,52 @@ window.PRODUCTS = [
     ],
     variants: ["Hộp 50gr","Hộp 100gr"],
     images: [
-      "./assets/img/banyen/chanyenrutlong.jpg",
       "./assets/img/banyen/chanyenrutlong.jpg"
+    ]
+  },{
+    id: "008",
+    name: "Tinh Chế Loại 3",
+    priceMin: "1.500.000 đ",
+    priceMax: "2.800.000 đ",
+    sold: 55,
+    bullets: [
+      { k: "Chi tiết", v: "Yến tinh chế loại 3 là phần chân tổ yến đã làm sạch, sợi yến tự nhiên, dễ chế biến, phù hợp bồi bổ sức khỏe hằng ngày." },
+      { k: "Hạn sử dụng", v: "12 tháng" },
+      { k: "Hướng dẫn sử dụng", v: "Chưng hoặc nấu súp" }
+    ],
+    variants: ["Hộp 50gr","Hộp 100gr"],
+    images: [
+      "./assets/img/banyen/tc3.jpg"
+    ]
+  },{
+    id: "009",
+    name: "Vụn Sơ Mướp",
+    priceMin: "1.400.000 đ",
+    priceMax: "2.500.000 đ",
+    sold: 55,
+    bullets: [
+      { k: "Chi tiết", v: "Vụn sơ mướp tự nhiên, đã làm sạch, dùng rửa chén hoặc vệ sinh hằng ngày." },
+      { k: "Hạn sử dụng", v: "12 tháng" },
+      { k: "Hướng dẫn sử dụng", v: "Làm ướt trước khi dùng" }
+    ],
+    variants: ["Hộp 50gr","Hộp 100gr"],
+    images: [
+      "./assets/img/banyen/vunnomuop.jpg"
+    ]
+  },{
+    id: "010",
+    name: "Vụn Đắp Chân",
+    priceMin: "1.200.000 đ",
+    priceMax: "2.300.000 đ",
+    sold: 55,
+    bullets: [
+      { k: "Chi tiết", v: "Phần chân tổ đã làm sạch." },
+      { k: "Hạn sử dụng", v: "12 tháng" },
+      { k: "Hướng dẫn sử dụng", v: "Dùng để nấu súp." }
+    ],
+    variants: ["Hộp 50gr","Hộp 100gr"],
+    images: [
+      "./assets/img/banyen/vunnomuop.jpg"
     ]
   }
 ];
